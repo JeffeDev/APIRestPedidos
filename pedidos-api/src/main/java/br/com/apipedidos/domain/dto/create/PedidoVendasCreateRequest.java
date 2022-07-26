@@ -3,7 +3,6 @@ package br.com.apipedidos.domain.dto.create;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import br.com.apipedidos.domain.entity.StatusPedidoEnum;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
@@ -24,5 +23,5 @@ public class PedidoVendasCreateRequest {
 	
 	@NotEmpty(message = "Por favor, informe o valor Total do Pedido")
 	private BigDecimal totalPedido;
-	private StatusPedidoEnum statusPedido;
+	private String statusPedido;
 }

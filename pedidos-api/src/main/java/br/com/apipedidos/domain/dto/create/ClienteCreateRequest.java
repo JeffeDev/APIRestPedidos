@@ -1,19 +1,16 @@
 package br.com.apipedidos.domain.dto.create;
 
-import br.com.apipedidos.domain.entity.TipoPessoaEnum;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
 public class ClienteCreateRequest {
 
-	private String Id;
-	
 	@NotEmpty(message = "Por favor, informe o nome do cliente")
 	private String nome;
 	
-	@NotEmpty(message = "Por favor, informe o tipo pessoa fisica ou jurídica")
-	private TipoPessoaEnum tipoPessoa;
+	@NotEmpty(message = "Por favor, informe o tipo pessoa FISCA ou JURIDICA")
+	private String tipoPessoa;
 	
 	@NotEmpty(message = "Por favor, informe o telefone")
 	private String telefone;

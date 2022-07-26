@@ -2,6 +2,7 @@ package br.com.apipedidos.domain.dto.create;
 
 import java.math.BigDecimal;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
@@ -14,6 +15,6 @@ public class ProdutoCreateRequest {
 	@NotEmpty(message = "Por favor, informe o path da imagem")
 	private String image;
 	
-	@NotEmpty(message = "Por favor, informe o preço do produto")
+	@Min(value=0, message = "Por favor, informe o preço do produto")
 	private BigDecimal preco;
 }

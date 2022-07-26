@@ -27,6 +27,11 @@ public class ClienteController {
 	@Autowired
     private ClienteService service;
 
+	@GetMapping("/")
+	public String Teste() {
+		return "Oi";
+	}
+	 
     @GetMapping("/cliente")
     public ResponseEntity<List<ClienteResponse>>  getAll() {
         var result = service.listAll();

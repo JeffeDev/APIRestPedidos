@@ -1,6 +1,5 @@
 package br.com.apipedidos.domain.dto.response;
 
-import br.com.apipedidos.domain.entity.TipoPessoaEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,7 +10,7 @@ public class ClienteResponse {
 	private String id;
 	
 	private String nome;
-	private TipoPessoaEnum tipoPessoa=TipoPessoaEnum.FISICA;
+	private String tipoPessoa="FISICA";
 	private String telefone;
 	private String email;
 }

@@ -13,11 +13,10 @@ public class Cliente implements Serializable{
 	private String id;
 	
 	private String nome;
-	
-	private TipoPessoaEnum tipoPessoa=TipoPessoaEnum.FISICA;
-	
+	private String tipoPessoa="FISICA";
 	private String telefone;
 	private String email;
+	private String documento; //cpf ou cnpj
 	
 	public Cliente() {
 	}
@@ -36,13 +35,6 @@ public class Cliente implements Serializable{
 		this.nome = nome;
 	}
 
-	public TipoPessoaEnum getTipoPessoa() {
-		return tipoPessoa;
-	}
-	public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
-		this.tipoPessoa = tipoPessoa;
-	}
-
 	public String getTelefone() {
 		return telefone;
 	}
@@ -55,6 +47,22 @@ public class Cliente implements Serializable{
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 	
 }

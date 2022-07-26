@@ -33,7 +33,6 @@ public class ClienteService {
 
 	public ClienteResponse create(ClienteCreateRequest request) {
 		var newCliente = new Cliente();
-		newCliente.setId(request.getId());
 		newCliente.setNome(request.getNome());
 		newCliente.setTelefone(request.getTelefone());
 		newCliente.setTipoPessoa(request.getTipoPessoa());
@@ -41,8 +40,12 @@ public class ClienteService {
 		
 		var saveCliente = clienteRepository.save(newCliente);
 
-		return new ClienteResponse(saveCliente.getId(), saveCliente.getNome(), saveCliente.getTipoPessoa(),
-				saveCliente.getTelefone(), saveCliente.getEmail());
+		return new ClienteResponse(
+				saveCliente.getId(), 
+				saveCliente.getNome(), 
+				saveCliente.getTipoPessoa(),
+				saveCliente.getTelefone(), 
+				saveCliente.getEmail());
 	}
 
 	public ClienteResponse update(String id, ClienteUpdateRequest request) {

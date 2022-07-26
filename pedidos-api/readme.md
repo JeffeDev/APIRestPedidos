@@ -51,7 +51,15 @@
 
 #### GET cliente e POST cliente
 ````
-https://localhost/cliente
+https://localhost:8080/cliente
+
+{
+    "timestamp": "2022-07-26T22:58:42.215+00:00",
+    "status": 405,
+    "error": "Method Not Allowed",
+    "path": "/cliente"
+}
+
 ````
 
 #### GET cliente e POST cliente Update
@@ -61,7 +69,10 @@ https://localhost/cliente/{id}
 
 #### DELETE Cliente e PATCH cliente-deletar
 ````
-https://localhost/cliente-deletar/{id}
+https://localhost:8080/cliente-deletar/{id}
+
+localhost:8080/cliente-deletar/62e07002b69a2d785bbb443d
+
 ````
 
 

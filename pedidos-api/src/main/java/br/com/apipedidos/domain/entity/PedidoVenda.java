@@ -14,27 +14,25 @@ public class PedidoVenda implements Serializable {
 	@Id
 	private String id;
 	
-	@Id 
 	private Long numeroPedido;
-	
 	private String cliente_id;
 	private Date dataEmissao;
 	private Date dataEntrega;
 	private BigDecimal totalPedido;
 	
-	private StatusPedidoEnum statusPedido=StatusPedidoEnum.ABERTO;
+	private String statusPedido="ABERTO";
 	
 	public PedidoVenda() {
 	}
 
 	public PedidoVenda(Long numeroPedido, String cliente_id, Date dataEmissao, Date dataEntrega, 
-			BigDecimal totalPedido, StatusPedidoEnum statusPedido) {
+			BigDecimal totalPedido, String statusPedido) {
 		this.numeroPedido = numeroPedido;
 		this.cliente_id = cliente_id;
 		this.dataEmissao = dataEmissao;
 		this.dataEntrega = dataEntrega;
 		this.totalPedido = totalPedido;
-		this.statusPedido = statusPedido;
+		this.setStatusPedido(statusPedido);
 	}
 
 	public String getId() {
@@ -85,12 +83,12 @@ public class PedidoVenda implements Serializable {
 		this.totalPedido = totalPedido;
 	}
 
-	public StatusPedidoEnum getStatusPedido() {
+	public String getStatusPedido() {
 		return statusPedido;
 	}
 
-	public void setStatusPedido(StatusPedidoEnum statusPedido) {
+	public void setStatusPedido(String statusPedido) {
 		this.statusPedido = statusPedido;
 	}
-	
+
 }
