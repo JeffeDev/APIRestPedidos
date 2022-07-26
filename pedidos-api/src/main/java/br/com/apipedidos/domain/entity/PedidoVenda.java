@@ -7,23 +7,22 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
-
 @Document(collection = "pedido-de-venda")
 public class PedidoVenda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String id;
-	@Id
+	
+	@Id 
 	private Long numeroPedido;
+	
 	private String cliente_id;
 	private Date dataEmissao;
 	private Date dataEntrega;
 	private BigDecimal totalPedido;
 	
-	@JsonEnumDefaultValue
-	private StatusPedidoEnum statusPedido;
+	private StatusPedidoEnum statusPedido=StatusPedidoEnum.ABERTO;
 	
 	public PedidoVenda() {
 	}

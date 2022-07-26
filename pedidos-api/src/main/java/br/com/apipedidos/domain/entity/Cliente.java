@@ -5,8 +5,6 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
-
 @Document(collection = "cliente")
 public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -16,20 +14,12 @@ public class Cliente implements Serializable{
 	
 	private String nome;
 	
-	@JsonEnumDefaultValue
-	private TipoPessoaEnum tipoPessoa;
+	private TipoPessoaEnum tipoPessoa=TipoPessoaEnum.FISICA;
 	
 	private String telefone;
 	private String email;
 	
 	public Cliente() {
-	}
-
-	public Cliente(String nome, TipoPessoaEnum tipoPessoa, String telefone, String email) {
-		this.nome = nome;
-		this.tipoPessoa = tipoPessoa;
-		this.telefone = telefone;
-		this.email = email;
 	}
 	
 	public String getId() {

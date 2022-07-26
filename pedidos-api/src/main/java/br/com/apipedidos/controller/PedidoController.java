@@ -3,6 +3,7 @@ package br.com.apipedidos.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,16 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.apipedidos.domain.dto.create.PedidoVendasCreateRequest;
 import br.com.apipedidos.domain.dto.response.PedidoVendaResponse;
 import br.com.apipedidos.domain.dto.update.PedidoVendasUpdateRequest;
+import br.com.apipedidos.repository.PedidoItemRepository;
 import br.com.apipedidos.services.PedidoVendaService;
 import jakarta.validation.Valid;
 
 @RestController
 public class PedidoController {
-    private final PedidoVendaService service;
+	
+	@Autowired
+	private  PedidoVendaService service;
+    
+    @Autowired
+    private PedidoItemRepository itens;
 
-    public PedidoController(PedidoVendaService service) {
-        this.service = service;
-    }
 
     @GetMapping("/pedido")
     public ResponseEntity<List<PedidoVendaResponse>>  getAll() {
@@ -45,11 +49,11 @@ public class PedidoController {
     public ResponseEntity<PedidoVendaResponse> update(
             @PathVariable("id") String id,
             @RequestBody @Valid PedidoVendasUpdateRequest updateRequest) {
-        var cliente = service.update(id, updateRequest);
-        return ResponseEntity.ok(cliente);
+        var pedido = service.update(id, updateRequest);
+        return ResponseEntity.ok(pedido);
     }
 
-    @DeleteMapping("/cliente-deletar/{id}")
+    @DeleteMapping("/pedido-deletar/{id}")
     public ResponseEntity<PedidoVendaResponse> delete(@PathVariable("id") String id) {
         var pedido = service.delete(id);
         return ResponseEntity.ok(pedido);

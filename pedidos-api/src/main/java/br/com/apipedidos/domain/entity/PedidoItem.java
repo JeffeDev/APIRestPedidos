@@ -15,6 +15,7 @@ public class PedidoItem implements Serializable {
 	
 	private String produto_id;
 	private String pedido_id;
+	
 	private Integer sequencia;
 	private BigDecimal quantidade;
 	private BigDecimal precoUnitario;

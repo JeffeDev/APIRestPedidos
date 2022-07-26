@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 public class ClienteCreateRequest {
 
+	private String Id;
+	
 	@NotEmpty(message = "Por favor, informe o nome do cliente")
 	private String nome;
 	

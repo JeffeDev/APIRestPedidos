@@ -11,7 +11,7 @@ public class ClienteResponse {
 	private String id;
 	
 	private String nome;
-	private TipoPessoaEnum tipoPessoa;
+	private TipoPessoaEnum tipoPessoa=TipoPessoaEnum.FISICA;
 	private String telefone;
 	private String email;
 }

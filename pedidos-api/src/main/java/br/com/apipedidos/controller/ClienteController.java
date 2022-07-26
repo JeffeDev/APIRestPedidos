@@ -3,6 +3,7 @@ package br.com.apipedidos.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,11 +23,9 @@ import jakarta.validation.Valid;
 
 @RestController
 public class ClienteController {
-    private final ClienteService service;
-
-    public ClienteController(ClienteService service) {
-        this.service = service;
-    }
+	
+	@Autowired
+    private ClienteService service;
 
     @GetMapping("/cliente")
     public ResponseEntity<List<ClienteResponse>>  getAll() {

@@ -3,6 +3,7 @@ package br.com.apipedidos.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,35 +16,30 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.apipedidos.domain.dto.create.PedidoItemCreateRequest;
-import br.com.apipedidos.domain.dto.create.PedidoVendasCreateRequest;
 import br.com.apipedidos.domain.dto.response.PedidoItemResponse;
-import br.com.apipedidos.domain.dto.response.PedidoVendaResponse;
 import br.com.apipedidos.domain.dto.update.PedidoItemUpdateRequest;
 import br.com.apipedidos.services.PedidoItemService;
 import jakarta.validation.Valid;
 
 @RestController
 public class PedidoItemController {
-    private final PedidoItemService service;
+    @Autowired
+	private PedidoItemService service;
 
-    public PedidoItemController(PedidoItemService service) {
-        this.service = service;
-    }
-
-    @GetMapping("/pedido-item")
+    @GetMapping("/itenspedido")
     public ResponseEntity<List<PedidoItemResponse>>  getAll() {
         var result = service.listAll();
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping("/pedido-item")
+    @PostMapping("/itenspedido")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<PedidoItemResponse> create(@RequestBody @Valid PedidoItemCreateRequest request) {
         var result = service.create(request);
         return ResponseEntity.ok(result);
     }
 
-    @PatchMapping("/pedido-item/{id}")
+    @PatchMapping("/itenspedido/{id}")
     public ResponseEntity<PedidoItemResponse> update(
             @PathVariable("id") String id,
             @RequestBody @Valid PedidoItemUpdateRequest updateRequest) {
@@ -51,7 +47,7 @@ public class PedidoItemController {
         return ResponseEntity.ok(pedidoitem);
     }
 
-    @DeleteMapping("/cliente-deletar/{id}")
+    @DeleteMapping("/itenspedido-deletar/{id}")
     public ResponseEntity<PedidoItemResponse> delete(@PathVariable("id") String id) {
         var pedidoItem = service.delete(id);
         return ResponseEntity.ok(pedidoItem);

@@ -3,6 +3,7 @@ package br.com.apipedidos.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.apipedidos.domain.dto.create.ClienteCreateRequest;
@@ -14,40 +15,34 @@ import br.com.apipedidos.repository.ClienteRepository;
 
 @Service
 public class ClienteService {
-	private final ClienteRepository clienteRepository;
-
-	public ClienteService(ClienteRepository clienterepository) {
-		this.clienteRepository = clienterepository;
-	}
 	
+	@Autowired
+	private ClienteRepository clienteRepository;
+
 	public List<ClienteResponse> listAll() {
 		var result = clienteRepository.findAll();
 
-		return result.stream().map(cliente -> 
-			new ClienteResponse(
-				cliente.getId(), 
-				cliente.getNome(),
-				cliente.getTipoPessoa(), 
-				cliente.getTelefone(), 
-				cliente.getEmail())).collect(Collectors.toList());
+		return result
+				.stream().map(cliente -> new ClienteResponse(cliente.getId(), cliente.getNome(),
+						cliente.getTipoPessoa(), cliente.getTelefone(), cliente.getEmail()))
+				.collect(Collectors.toList());
+	}
+
+	public ClienteService() {
 	}
 
 	public ClienteResponse create(ClienteCreateRequest request) {
-			var newClientee = new Cliente(
-				request.getNome(), 
-				request.getTipoPessoa(), 
-				request.getTelefone(), 
-				request.getEmail()
-			);
-		var saveCliente = clienteRepository.save(newClientee);
+		var newCliente = new Cliente();
+		newCliente.setId(request.getId());
+		newCliente.setNome(request.getNome());
+		newCliente.setTelefone(request.getTelefone());
+		newCliente.setTipoPessoa(request.getTipoPessoa());
+		newCliente.setEmail(request.getEmail());
+		
+		var saveCliente = clienteRepository.save(newCliente);
 
-		return new ClienteResponse(
-				saveCliente.getId(), 
-				saveCliente.getNome(), 
-				saveCliente.getTipoPessoa(),
-				saveCliente.getTelefone(),
-				saveCliente.getEmail()
-			);
+		return new ClienteResponse(saveCliente.getId(), saveCliente.getNome(), saveCliente.getTipoPessoa(),
+				saveCliente.getTelefone(), saveCliente.getEmail());
 	}
 
 	public ClienteResponse update(String id, ClienteUpdateRequest request) {
@@ -58,20 +53,14 @@ public class ClienteService {
 		}
 
 		var updateCliente = result.get();
-		    updateCliente.setNome(request.getNome());
-		    updateCliente.setTipoPessoa(request.getTipoPessoa());
-		    updateCliente.setTelefone(request.getTelefone());
-		    updateCliente.setEmail(request.getEmail()
-		);
-		var saveCliente= clienteRepository.save(updateCliente);
-		
-		return new ClienteResponse(
-				saveCliente.getId(), 
-				saveCliente.getNome(), 
-				saveCliente.getTipoPessoa(),
-				saveCliente.getTelefone(),
-				saveCliente.getEmail()
-			);
+		updateCliente.setNome(request.getNome());
+		updateCliente.setTipoPessoa(request.getTipoPessoa());
+		updateCliente.setTelefone(request.getTelefone());
+		updateCliente.setEmail(request.getEmail());
+		var saveCliente = clienteRepository.save(updateCliente);
+
+		return new ClienteResponse(saveCliente.getId(), saveCliente.getNome(), saveCliente.getTipoPessoa(),
+				saveCliente.getTelefone(), saveCliente.getEmail());
 	}
 
 	public ClienteResponse delete(String id) {
@@ -84,12 +73,7 @@ public class ClienteService {
 		Cliente deletarCliente = result.get();
 		clienteRepository.delete(deletarCliente);
 
-		return new ClienteResponse(
-				deletarCliente.getId(), 
-				deletarCliente.getNome(), 
-				deletarCliente.getTipoPessoa(), 
-				deletarCliente.getTelefone(),
-				deletarCliente.getEmail()
-			);
+		return new ClienteResponse(deletarCliente.getId(), deletarCliente.getNome(), deletarCliente.getTipoPessoa(),
+				deletarCliente.getTelefone(), deletarCliente.getEmail());
 	}
 }
