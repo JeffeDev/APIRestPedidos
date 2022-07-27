@@ -1,5 +1,8 @@
 package br.com.apipedidos.controller;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,14 +21,30 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * 
  */
 class PedidoItemControllerTest {
+    private static final String URL_ITENS_PEDIDO = "http://localhost:8080/itenspedido";
+    private WebDriver browser;
 
+    @BeforeAll
+    public static void beforeAll() {
+        System.setProperty("webdriver.chrome.driver", "driverSeleniumChrome/chromedriver.exe");
+    }
+
+    @BeforeEach
+    public void beforeEach(){
+        this.browser = new ChromeDriver();
+        browser.navigate().to(URL_ITENS_PEDIDO);
+
+    }
+
+    @AfterEach
+    public void afterEach(){
+        this.browser.quit();
+    }
+    
+	
 	@Test
 	void deveriaAbriroNavegadorEAcessaroLinkitenspedido() {
-        System.setProperty("webdriver.chrome.driver", "driverSeleniumChrome/chromedriver.exe");
-        
-        WebDriver browser = new ChromeDriver();
-        browser.navigate().to("http://localhost:8080/itenspedido");
-        browser.quit();
+        browser.navigate().to(URL_ITENS_PEDIDO);
 	}
 
 }
