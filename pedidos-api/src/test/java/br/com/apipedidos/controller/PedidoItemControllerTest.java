@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import br.com.apipedidos.repository.PedidoItemRepository;
 
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class PedidoItemControllerTest {
 	
 	@Autowired

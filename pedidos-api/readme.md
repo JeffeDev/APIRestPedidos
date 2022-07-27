@@ -43,6 +43,7 @@
 >> Banco de dados MongoDb
 
 - App será feito em TotalCross Java 8
+
 >> Banco de Dados local ( ainda estou decidindo )
 
 
@@ -64,7 +65,7 @@ https://localhost:8080/cliente
 
 #### GET cliente e POST cliente Update
 ````
-https://localhost/cliente/{id}
+https://localhost:8080/cliente/{id}
 ````
 
 #### DELETE Cliente e PATCH cliente-deletar
@@ -79,52 +80,52 @@ localhost:8080/cliente-deletar/62e07002b69a2d785bbb443d
 
 #### GET produto e POST produto
 ````
-https://localhost/produto
+https://localhost:8080/produto
 ````
 
 #### GET produto e POST produto Update
 
 ````
-https://localhost/produto/{id}
+https://localhost:8080/produto/{id}
 ````
 
 #### DELETE Produto e PATCH produto-deletar
 ````
-https://localhost/produto-deletar/{id}
+https://localhost:8080/produto-deletar/{id}
 ````
 
 
 
 #### GET pedido e POST pedido
 ````
-https://localhost/pedido
+https://localhost:8080/pedido
 ````
 
 #### GET pedido e POST pedido Update
 ````
-https://localhost/pedido/{id}
+https://localhost:8080/pedido/{id}
 ````
 
 #### DELETE Pedido e PATCH pedido-deletar
 ````
-https://localhost/pedido-deletar/{id}
+https://localhost:8080/pedido-deletar/{id}
 ````
 
 
 
 #### GET itenspedido e POST itenspedido
 ````
-https://localhost/itenspedido
+https://localhost:8080/itenspedido
 ````
 
 #### GET itenspedido e POST itenspedido Update
 ````
-https://localhost/itenspedido/{id}
+https://localhost:8080/itenspedido/{id}
 ````
 
 #### DELETE itenspedido e PATCH itenspedido-deletar
 ````
-https://localhost/itenspedido-deletar/{id}
+https://localhost:8080/itenspedido-deletar/{id}
 ````
 
 
