@@ -54,13 +54,6 @@
 ````
 https://localhost:8080/cliente
 
-{
-    "timestamp": "2022-07-26T22:58:42.215+00:00",
-    "status": 405,
-    "error": "Method Not Allowed",
-    "path": "/cliente"
-}
-
 ````
 
 #### GET cliente e POST cliente Update
