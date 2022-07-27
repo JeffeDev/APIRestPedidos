@@ -12,7 +12,7 @@
 - GET de 	/cliente 
 			/pedido
 			/produto 
-			/produto-imagem
+	
 
 - POST de 	/cliente 
 			/pedido 
@@ -159,6 +159,8 @@ https://localhost:8080/pedido-deletar/{id}
 	private BigDecimal totalItem;
 
 ````
+
+
 
 #### GET itenspedido e POST itenspedido
 ````
