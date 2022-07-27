@@ -50,6 +50,19 @@
 
 ## 🖥️ Endpoints
 
+#### @Document(collection = "cliente")
+````
+	@Id
+	private String id;
+	
+	private String nome;
+	private String tipoPessoa="FISICA";
+	private String telefone;
+	private String email;
+	private String documento; //cpf ou cnpj
+
+````
+
 #### GET cliente e POST cliente
 ````
 https://localhost:8080/cliente
@@ -70,6 +83,16 @@ localhost:8080/cliente-deletar/62e07002b69a2d785bbb443d
 ````
 
 
+#### @Document(collection = "produto")
+````
+	@Id
+	private String id;
+	
+	private String nome;
+	private String image;
+	private BigDecimal preco;
+
+````
 
 #### GET produto e POST produto
 ````
@@ -89,6 +112,21 @@ https://localhost:8080/produto-deletar/{id}
 
 
 
+#### @Document(collection = "pedido-de-venda")
+````
+	@Id
+	private String id;
+	
+	private Long numeroPedido;
+	private String cliente_id;
+	private Date dataEmissao;
+	private Date dataEntrega;
+	private BigDecimal totalPedido;
+	
+	private String statusPedido="ABERTO";
+
+````
+
 #### GET pedido e POST pedido
 ````
 https://localhost:8080/pedido
@@ -105,6 +143,22 @@ https://localhost:8080/pedido-deletar/{id}
 ````
 
 
+
+#### @Document(collection = "pedido-itens")
+````
+	@Id
+	private String id;
+	
+	private String produto_id;
+	private String pedido_id;
+	
+	private Integer sequencia;
+	private BigDecimal quantidade;
+	private BigDecimal precoUnitario;
+	private BigDecimal desconto;
+	private BigDecimal totalItem;
+
+````
 
 #### GET itenspedido e POST itenspedido
 ````
@@ -132,7 +186,7 @@ https://localhost:8080/itenspedido-deletar/{id}
 
 
 
-## 🎯 O que o projeto bak-end faz:
+## 🎯 O que o projeto faz:
   - [X] CRUD (Create, Read, Update e Delete) para se poder atualizar e excluir 
   		um cliente, produto, pedido, itenspedido cadastrados;
 
