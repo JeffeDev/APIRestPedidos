@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.context.annotation.Profile;
 
 /*
  * @author: Jefferson César de Souza
@@ -20,6 +21,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * 			Este teste deve ser executado com o sistema em execução
  * 
  */
+
+@Profile("test")
 class PedidoItemControllerTest {
     private static final String URL_ITENS_PEDIDO = "http://localhost:8080/itenspedido";
     private WebDriver browser;
