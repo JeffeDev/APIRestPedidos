@@ -43,8 +43,11 @@ public class PedidoVendaService {
 				request.getStatusPedido()
 			);
 		
+		System.out.println(request);
+		
 		var savePedidoVenda = pedidoVendaRepository.save(newPedidoVenda);
-
+		System.out.println(savePedidoVenda);
+		
 		return new PedidoVendaResponse(
 				savePedidoVenda.getId(), 
 				savePedidoVenda.getNumeroPedido(), 

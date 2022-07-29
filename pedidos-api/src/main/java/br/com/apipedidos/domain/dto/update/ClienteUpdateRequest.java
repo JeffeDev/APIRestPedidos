@@ -17,4 +17,7 @@ public class ClienteUpdateRequest {
 	
 	@NotEmpty(message = "Por favor, informe o email")
 	private String email;
+	
+	@NotEmpty(message = "Por favor, informe o CPF/CNPJ")
+	private String documento;
 }

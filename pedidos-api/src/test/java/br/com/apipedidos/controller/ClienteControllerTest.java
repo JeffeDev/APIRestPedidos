@@ -40,7 +40,6 @@ class ClienteControllerTest {
     public void afterEach(){
         this.browser.quit();
     }
-
     
 	@Test
 	void deveriaAbriroNavegadorEAcessaroLinkCliente() {

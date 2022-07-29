@@ -67,6 +67,16 @@
 ````
 https://localhost:8080/cliente
 
+
+    {
+    "nome": "fulano", 
+    "tipoPessoa": "FISICA", 
+    "telefone": "(48)99999-5555", 
+    "email": "email@gmail.com",
+    "documento": "111.111.111-11"
+    }
+    
+
 ````
 
 #### GET cliente e POST cliente Update

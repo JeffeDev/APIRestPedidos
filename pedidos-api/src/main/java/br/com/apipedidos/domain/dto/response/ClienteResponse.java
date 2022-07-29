@@ -13,4 +13,5 @@ public class ClienteResponse {
 	private String tipoPessoa="FISICA";
 	private String telefone;
 	private String email;
+	private String documento;
 }

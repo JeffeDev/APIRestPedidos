@@ -23,28 +23,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 class ProdutoControllerTest {
     private static final String URL_PRODUTO = "http://localhost:8080/produto";
     private WebDriver browser;
-
     @BeforeAll
     public static void beforeAll() {
         System.setProperty("webdriver.chrome.driver", "driverSeleniumChrome/chromedriver.exe");
     }
-
     @BeforeEach
     public void beforeEach(){
         this.browser = new ChromeDriver();
         browser.navigate().to(URL_PRODUTO);
-
     }
-
     @AfterEach
     public void afterEach(){
         this.browser.quit();
     }
-    
-
 	@Test
 	void deveriaAbriroNavegadorEAcessaroLinkproduto() {
         browser.navigate().to(URL_PRODUTO);
 	}
-
 }

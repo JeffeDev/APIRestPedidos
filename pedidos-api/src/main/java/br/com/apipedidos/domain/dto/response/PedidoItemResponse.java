@@ -11,7 +11,9 @@ import lombok.Data;
 public class PedidoItemResponse {
 	private String Id;
 	private String produto_id;
+	
 	private String pedido_id;
+	
 	private Integer sequencia;
 	private BigDecimal quantidade;
 	private BigDecimal precoUnitario;

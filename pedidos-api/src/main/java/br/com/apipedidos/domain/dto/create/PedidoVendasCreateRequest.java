@@ -1,7 +1,6 @@
 package br.com.apipedidos.domain.dto.create;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -16,12 +15,13 @@ public class PedidoVendasCreateRequest {
 	private String cliente_id;
 	
 	@NotEmpty(message = "Por favor, informe a data emissão")
-	private Date dataEmissao;
+	private String dataEmissao;
 	
 	@NotEmpty(message = "Por favor, informe a data Entrega")
-	private Date dataEntrega;
+	private String dataEntrega;
 	
 	@NotEmpty(message = "Por favor, informe o valor Total do Pedido")
 	private BigDecimal totalPedido;
+	
 	private String statusPedido;
 }

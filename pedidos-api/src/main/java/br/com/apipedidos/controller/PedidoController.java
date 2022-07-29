@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.apipedidos.domain.dto.create.PedidoVendasCreateRequest;
 import br.com.apipedidos.domain.dto.response.PedidoVendaResponse;
 import br.com.apipedidos.domain.dto.update.PedidoVendasUpdateRequest;
-import br.com.apipedidos.repository.PedidoItemRepository;
 import br.com.apipedidos.services.PedidoVendaService;
 import jakarta.validation.Valid;
 
@@ -28,10 +27,6 @@ public class PedidoController {
 	@Autowired
 	private  PedidoVendaService service;
     
-    @Autowired
-    private PedidoItemRepository itens;
-
-
     @GetMapping("/pedido")
     public ResponseEntity<List<PedidoVendaResponse>>  getAll() {
         var result = service.listAll();
@@ -58,4 +53,5 @@ public class PedidoController {
         var pedido = service.delete(id);
         return ResponseEntity.ok(pedido);
     }
+
 }

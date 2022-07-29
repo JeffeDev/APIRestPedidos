@@ -2,12 +2,14 @@ package br.com.apipedidos.domain.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "pedido-de-venda")
+
+@Document(collection = "pedidos")
 public class PedidoVenda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -16,31 +18,26 @@ public class PedidoVenda implements Serializable {
 	
 	private Long numeroPedido;
 	private String cliente_id;
-	private Date dataEmissao;
-	private Date dataEntrega;
+	private String dataEmissao;
+	private String dataEntrega;
 	private BigDecimal totalPedido;
 	
 	private String statusPedido="ABERTO";
-	
+
+	@Autowired
+    private List<PedidoItem> pedidos;
+
 	public PedidoVenda() {
 	}
 
-	public PedidoVenda(Long numeroPedido, String cliente_id, Date dataEmissao, Date dataEntrega, 
+	public PedidoVenda(Long numeroPedido, String cliente_id, String dataEmissao, String dataEntrega, 
 			BigDecimal totalPedido, String statusPedido) {
 		this.numeroPedido = numeroPedido;
 		this.cliente_id = cliente_id;
 		this.dataEmissao = dataEmissao;
 		this.dataEntrega = dataEntrega;
 		this.totalPedido = totalPedido;
-		this.setStatusPedido(statusPedido);
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+		this.statusPedido = statusPedido;
 	}
 
 	public Long getNumeroPedido() {
@@ -59,19 +56,19 @@ public class PedidoVenda implements Serializable {
 		this.cliente_id = cliente_id;
 	}
 
-	public Date getDataEmissao() {
+	public String getDataEmissao() {
 		return dataEmissao;
 	}
 
-	public void setDataEmissao(Date dataEmissao) {
+	public void setDataEmissao(String dataEmissao) {
 		this.dataEmissao = dataEmissao;
 	}
 
-	public Date getDataEntrega() {
+	public String getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(Date dataEntrega) {
+	public void setDataEntrega(String dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
@@ -89,6 +86,18 @@ public class PedidoVenda implements Serializable {
 
 	public void setStatusPedido(String statusPedido) {
 		this.statusPedido = statusPedido;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public List<PedidoItem> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<PedidoItem> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 }

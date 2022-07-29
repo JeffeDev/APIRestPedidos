@@ -2,7 +2,6 @@ package br.com.apipedidos.domain.dto.response;
 
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,10 +12,9 @@ public class PedidoVendaResponse {
 	private String id;
 	private Long numeroPedido;
 	private String cliente_id;
-	private Date dataEmissao;
-	private Date dataEntrega;
+	private String dataEmissao;
+	private String dataEntrega;
 	private BigDecimal totalPedido;
 	private String statusPedido;
-	
 	
 }

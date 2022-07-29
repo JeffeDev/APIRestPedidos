@@ -14,6 +14,7 @@ public class PedidoItem implements Serializable {
 	private String id;
 	
 	private String produto_id;
+	
 	private String pedido_id;
 	
 	private Integer sequencia;
@@ -28,7 +29,7 @@ public class PedidoItem implements Serializable {
 	public PedidoItem(String produto_id, String pedido_id, Integer sequencia, BigDecimal quantidade,
 			BigDecimal precoUnitario, BigDecimal desconto, BigDecimal totalItem) {
 		this.produto_id = produto_id;
-		this.pedido_id = pedido_id;
+		this.setPedido_id(pedido_id);
 		this.sequencia = sequencia;
 		this.quantidade = quantidade;
 		this.precoUnitario = precoUnitario;
@@ -47,12 +48,6 @@ public class PedidoItem implements Serializable {
 	}
 	public void setProduto_id(String produto_id) {
 		this.produto_id = produto_id;
-	}
-	public String getPedido_id() {
-		return pedido_id;
-	}
-	public void setPedido_id(String pedido_id) {
-		this.pedido_id = pedido_id;
 	}
 	public Integer getSequencia() {
 		return sequencia;
@@ -78,12 +73,19 @@ public class PedidoItem implements Serializable {
 	public void setDesconto(BigDecimal desconto) {
 		this.desconto = desconto;
 	}
-
 	public BigDecimal getTotalItem() {
 		return totalItem;
 	}
 	public void setTotalItem(BigDecimal totalItem) {
 		this.totalItem = totalItem;
+	}
+
+	public String getPedido_id() {
+		return pedido_id;
+	}
+
+	public void setPedido_id(String pedido_id) {
+		this.pedido_id = pedido_id;
 	}
 
 }

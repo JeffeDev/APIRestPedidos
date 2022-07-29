@@ -7,10 +7,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.apipedidos.domain.dto.create.PedidoItemCreateRequest;
 import br.com.apipedidos.domain.dto.response.PedidoItemResponse;
-import br.com.apipedidos.domain.dto.response.ProdutoResponse;
 import br.com.apipedidos.domain.dto.update.PedidoItemUpdateRequest;
 import br.com.apipedidos.domain.entity.PedidoItem;
-import br.com.apipedidos.domain.entity.Produto;
 import br.com.apipedidos.exception.ApiNotFoundException;
 import br.com.apipedidos.repository.PedidoItemRepository;
 
@@ -37,14 +35,14 @@ public class PedidoItemService {
 	}
 	
 	public PedidoItemResponse create(PedidoItemCreateRequest request) {
-		var newPedidoItem = new PedidoItem(
-				request.getProduto_id(), 
-				request.getPedido_id(), 
-				request.getSequencia(),
-				request.getQuantidade(),
-				request.getPrecoUnitario(),
-				request.getDesconto(),
-				request.getTotalItem());
+		var newPedidoItem = new PedidoItem();
+		newPedidoItem.setPedido_id(request.getPedido_id()); ;
+		newPedidoItem.setProduto_id(request.getProduto_id());
+		newPedidoItem.setSequencia(request.getSequencia());
+		newPedidoItem.setQuantidade(request.getQuantidade());
+		newPedidoItem.setPrecoUnitario(request.getPrecoUnitario());
+		newPedidoItem.setDesconto(request.getDesconto());
+		newPedidoItem.setTotalItem(request.getTotalItem());
 		
 		var saveProduto = pedidoItemRepository.save(newPedidoItem);
 

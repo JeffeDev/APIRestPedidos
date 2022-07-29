@@ -21,6 +21,16 @@ public class Cliente implements Serializable{
 	public Cliente() {
 	}
 	
+	
+	public Cliente(String nome, String tipoPessoa, String telefone, String email, String documento) {
+		this.nome = nome;
+		this.tipoPessoa = tipoPessoa;
+		this.telefone = telefone;
+		this.email = email;
+		this.documento = documento;
+	}
+
+
 	public String getId() {
 		return id;
 	}

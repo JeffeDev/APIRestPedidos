@@ -11,7 +11,6 @@ public class PedidoItemCreateRequest {
 	@NotEmpty(message = "Por favor, informe o produto_id")
 	private String produto_id;
 	
-	@NotEmpty(message = "Por favor, informe o pedido_id")
 	private String pedido_id;
 	
 	@NotEmpty(message = "Por favor, informe a sequencia")

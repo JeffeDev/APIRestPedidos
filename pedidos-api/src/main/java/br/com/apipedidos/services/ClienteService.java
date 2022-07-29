@@ -23,12 +23,14 @@ public class ClienteService {
 		var result = clienteRepository.findAll();
 
 		return result
-				.stream().map(cliente -> new ClienteResponse(cliente.getId(), cliente.getNome(),
-						cliente.getTipoPessoa(), cliente.getTelefone(), cliente.getEmail()))
+				.stream().map(cliente -> new ClienteResponse(
+						cliente.getId(), 
+						cliente.getNome(),
+						cliente.getTipoPessoa(), 
+						cliente.getTelefone(), 
+						cliente.getEmail(),
+						cliente.getDocumento()))
 				.collect(Collectors.toList());
-	}
-
-	public ClienteService() {
 	}
 
 	public ClienteResponse create(ClienteCreateRequest request) {
@@ -37,6 +39,7 @@ public class ClienteService {
 		newCliente.setTelefone(request.getTelefone());
 		newCliente.setTipoPessoa(request.getTipoPessoa());
 		newCliente.setEmail(request.getEmail());
+		newCliente.setDocumento(request.getDocumento());
 		
 		var saveCliente = clienteRepository.save(newCliente);
 
@@ -45,7 +48,8 @@ public class ClienteService {
 				saveCliente.getNome(), 
 				saveCliente.getTipoPessoa(),
 				saveCliente.getTelefone(), 
-				saveCliente.getEmail());
+				saveCliente.getEmail(),
+				saveCliente.getDocumento() );
 	}
 
 	public ClienteResponse update(String id, ClienteUpdateRequest request) {
@@ -60,10 +64,17 @@ public class ClienteService {
 		updateCliente.setTipoPessoa(request.getTipoPessoa());
 		updateCliente.setTelefone(request.getTelefone());
 		updateCliente.setEmail(request.getEmail());
+		updateCliente.setDocumento(request.getDocumento());
+		
 		var saveCliente = clienteRepository.save(updateCliente);
 
-		return new ClienteResponse(saveCliente.getId(), saveCliente.getNome(), saveCliente.getTipoPessoa(),
-				saveCliente.getTelefone(), saveCliente.getEmail());
+		return new ClienteResponse(
+				saveCliente.getId(), 
+				saveCliente.getNome(), 
+				saveCliente.getTipoPessoa(),
+				saveCliente.getTelefone(), 
+				saveCliente.getEmail(),
+				saveCliente.getDocumento());
 	}
 
 	public ClienteResponse delete(String id) {
@@ -76,7 +87,12 @@ public class ClienteService {
 		Cliente deletarCliente = result.get();
 		clienteRepository.delete(deletarCliente);
 
-		return new ClienteResponse(deletarCliente.getId(), deletarCliente.getNome(), deletarCliente.getTipoPessoa(),
-				deletarCliente.getTelefone(), deletarCliente.getEmail());
+		return new ClienteResponse(
+				deletarCliente.getId(), 
+				deletarCliente.getNome(), 
+				deletarCliente.getTipoPessoa(),
+				deletarCliente.getTelefone(), 
+				deletarCliente.getEmail(),
+				deletarCliente.getDocumento());
 	}
 }
