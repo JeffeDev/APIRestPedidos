@@ -48,9 +48,32 @@
 
 
 
-## 🖥️ Endpoints
+## 🖥️ Diagramas UML
 
+Diagrama de Classes
 ![Diagrama de Classe do Projeto](DiagramaDeClasse/PedidoVendaDiagram.jpg)
+
+
+
+Diagrama de Atividades
+![Diagrama de Atividades](DiagramaDeClasse/PedidoVendaDiagramAtividades.jpg)
+
+
+
+Diagrama de Caso de Uso Vendedor
+![Diagrama de Atividades](DiagramaDeClasse/PedidoVendaDiagramCasoDeUso.jpg)
+
+
+
+Diagrama de Caso de Uso Cliente
+![Diagrama de Atividades](DiagramaDeClasse/PedidoVendaDiagramCliente.jpg)
+
+
+
+Diagrama de Componentes
+![Diagrama de Atividades](DiagramaDeClasse/PedidoVendaDiagramComponentes.jpg)
+
+
 
 #### @Document(collection = "cliente")
 ````
