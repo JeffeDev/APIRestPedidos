@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.springframework.context.annotation.Profile;
+import org.springframework.test.context.ActiveProfiles;
 
 /*
  * @author: Jefferson César de Souza
@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Profile;
  * 			Este teste deve ser executado com o sistema em execução
  * 
  */
-@Profile("test")
+@ActiveProfiles("test")
 class ClienteControllerTest {
     private static final String URL_CLIENTE = "http://localhost:8080/cliente";
     private WebDriver browser;

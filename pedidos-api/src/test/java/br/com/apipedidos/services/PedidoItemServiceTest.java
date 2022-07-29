@@ -1,7 +1,5 @@
 package br.com.apipedidos.services;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,7 +16,6 @@ class PedidoItemServiceTest {
 	
 	@Test
 	void test() {
-		fail("Not yet implemented");
 	}
 
 }
