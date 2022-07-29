@@ -7,33 +7,10 @@
   </p>
 </div>
 
-## ⚙️ Funcionalidades 
+## ⚙️ [Mais Detalhes Clique aqui](https://github.com/JeffeDev/APIRestPedidos/tree/master/pedidos-api) 
 
-- GET de 	/cliente 
-			/pedido
-			/produto 
-			/produto-imagem
 
-- POST de 	/cliente 
-			/pedido 
-			/produto 
-
-- PATCH 
-* /cliente/{id} 
-		update altera tabela de clientes
-	
-* /pedido/{id}
- 		update altera tabela de pedido-de-venda
- 		
- * /produto/{id}
- 		update altera tabela de produto e produto-imagem
-  		
- 		
-		
-- DELETE de 	/cliente/id
- 				/pedido/id 
- 				/produto/id 
-
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 
 ## 🛠️ Tecnologias utilizadas
@@ -46,143 +23,11 @@
 
 >> Banco de Dados local ( ainda estou decidindo )
 
-
-
-## 🖥️ Endpoints
-
-#### @Document(collection = "cliente")
-````
-	@Id
-	private String id;
-	
-	private String nome;
-	private String tipoPessoa="FISICA";
-	private String telefone;
-	private String email;
-	private String documento; //cpf ou cnpj
-
-````
-
-#### GET cliente e POST cliente
-````
-https://localhost:8080/cliente
-
-````
-
-#### GET cliente e POST cliente Update
-````
-https://localhost:8080/cliente/{id}
-````
-
-#### DELETE Cliente e PATCH cliente-deletar
-````
-https://localhost:8080/cliente-deletar/{id}
-
-localhost:8080/cliente-deletar/62e07002b69a2d785bbb443d
-
-````
-
-
-#### @Document(collection = "produto")
-````
-	@Id
-	private String id;
-	
-	private String nome;
-	private String image;
-	private BigDecimal preco;
-
-````
-
-#### GET produto e POST produto
-````
-https://localhost:8080/produto
-````
-
-#### GET produto e POST produto Update
-
-````
-https://localhost:8080/produto/{id}
-````
-
-#### DELETE Produto e PATCH produto-deletar
-````
-https://localhost:8080/produto-deletar/{id}
-````
-
-
-
-#### @Document(collection = "pedido-de-venda")
-````
-	@Id
-	private String id;
-	
-	private Long numeroPedido;
-	private String cliente_id;
-	private Date dataEmissao;
-	private Date dataEntrega;
-	private BigDecimal totalPedido;
-	
-	private String statusPedido="ABERTO";
-
-````
-
-#### GET pedido e POST pedido
-````
-https://localhost:8080/pedido
-````
-
-#### GET pedido e POST pedido Update
-````
-https://localhost:8080/pedido/{id}
-````
-
-#### DELETE Pedido e PATCH pedido-deletar
-````
-https://localhost:8080/pedido-deletar/{id}
-````
-
-
-
-#### @Document(collection = "pedido-itens")
-````
-	@Id
-	private String id;
-	
-	private String produto_id;
-	private String pedido_id;
-	
-	private Integer sequencia;
-	private BigDecimal quantidade;
-	private BigDecimal precoUnitario;
-	private BigDecimal desconto;
-	private BigDecimal totalItem;
-
-````
-
-#### GET itenspedido e POST itenspedido
-````
-https://localhost:8080/itenspedido
-````
-
-#### GET itenspedido e POST itenspedido Update
-````
-https://localhost:8080/itenspedido/{id}
-````
-
-#### DELETE itenspedido e PATCH itenspedido-deletar
-````
-https://localhost:8080/itenspedido-deletar/{id}
-````
-
-
-
 ## 📒 Conteúdos  
 
 **BackEnd**: [Consumir API cliente, produto, pedido e itenspedido e exibir dados criar um gerador de imagens para os produtos](https://github.com/JeffeDev)
 
 **FrontEnd**: construir um APP para ler e enviar dados via Rest para o Back, utilizando ferramentas TotalCross com Spring Framework e um banco de dados NoSQL.
-
 
 
 
