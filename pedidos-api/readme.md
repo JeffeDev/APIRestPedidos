@@ -50,6 +50,8 @@
 
 ## 🖥️ Endpoints
 
+![Diagrama de Classe do Projeto](DiagramaDeClasse/PedidoVendaDiagram.jpg)
+
 #### @Document(collection = "cliente")
 ````
 	@Id
