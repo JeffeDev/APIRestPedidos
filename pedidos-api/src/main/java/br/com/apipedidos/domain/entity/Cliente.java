@@ -5,6 +5,9 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 @Document(collection = "cliente")
 public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -13,7 +16,10 @@ public class Cliente implements Serializable{
 	private String id;
 	
 	private String nome;
-	private String tipoPessoa="FISICA";
+	
+	@Enumerated(EnumType.STRING)
+	private TipoPessoaEnum tipoPessoa = TipoPessoaEnum.FISICA;
+	
 	private String telefone;
 	private String email;
 	private String documento; //cpf ou cnpj
@@ -22,7 +28,7 @@ public class Cliente implements Serializable{
 	}
 	
 	
-	public Cliente(String nome, String tipoPessoa, String telefone, String email, String documento) {
+	public Cliente(String nome, TipoPessoaEnum tipoPessoa, String telefone, String email, String documento) {
 		this.nome = nome;
 		this.tipoPessoa = tipoPessoa;
 		this.telefone = telefone;
@@ -59,11 +65,11 @@ public class Cliente implements Serializable{
 		this.email = email;
 	}
 
-	public String getTipoPessoa() {
+	public TipoPessoaEnum getTipoPessoa() {
 		return tipoPessoa;
 	}
 
-	public void setTipoPessoa(String tipoPessoa) {
+	public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
 

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 
 @Document(collection = "pedidos")
 public class PedidoVenda implements Serializable {
@@ -22,7 +25,8 @@ public class PedidoVenda implements Serializable {
 	private String dataEntrega;
 	private BigDecimal totalPedido;
 	
-	private String statusPedido="ABERTO";
+	@Enumerated(EnumType.STRING)
+	private StatusPedidoEnum statusPedido = StatusPedidoEnum.ABERTO;
 
 	@Autowired
     private List<PedidoItem> pedidos;
@@ -31,7 +35,7 @@ public class PedidoVenda implements Serializable {
 	}
 
 	public PedidoVenda(Long numeroPedido, String cliente_id, String dataEmissao, String dataEntrega, 
-			BigDecimal totalPedido, String statusPedido) {
+			BigDecimal totalPedido, StatusPedidoEnum statusPedido) {
 		this.numeroPedido = numeroPedido;
 		this.cliente_id = cliente_id;
 		this.dataEmissao = dataEmissao;
@@ -80,11 +84,11 @@ public class PedidoVenda implements Serializable {
 		this.totalPedido = totalPedido;
 	}
 
-	public String getStatusPedido() {
+	public StatusPedidoEnum getStatusPedido() {
 		return statusPedido;
 	}
 
-	public void setStatusPedido(String statusPedido) {
+	public void setStatusPedido(StatusPedidoEnum statusPedido) {
 		this.statusPedido = statusPedido;
 	}
 
