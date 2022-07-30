@@ -2,6 +2,7 @@ package br.com.apipedidos.domain.dto.update;
 
 import java.math.BigDecimal;
 
+import br.com.apipedidos.domain.entity.StatusPedidoEnum;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
@@ -12,5 +13,5 @@ public class PedidoVendasUpdateRequest {
 	private BigDecimal totalPedido;
 	
 	@NotEmpty(message = "Por favor, informe o um Status Venda")
-	private String statusPedido;
+	private StatusPedidoEnum statusPedido;
 }

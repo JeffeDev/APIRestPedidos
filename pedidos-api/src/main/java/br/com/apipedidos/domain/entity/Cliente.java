@@ -3,12 +3,13 @@ package br.com.apipedidos.domain.entity;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
-@Document(collection = "cliente")
+//@Document(collection = "cliente") //Mongo
+@Entity(name = "cliente")
 public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

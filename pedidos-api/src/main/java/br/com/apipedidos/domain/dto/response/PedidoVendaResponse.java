@@ -3,6 +3,7 @@ package br.com.apipedidos.domain.dto.response;
 
 import java.math.BigDecimal;
 
+import br.com.apipedidos.domain.entity.StatusPedidoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -15,6 +16,6 @@ public class PedidoVendaResponse {
 	private String dataEmissao;
 	private String dataEntrega;
 	private BigDecimal totalPedido;
-	private String statusPedido;
+	private StatusPedidoEnum statusPedido;
 	
 }

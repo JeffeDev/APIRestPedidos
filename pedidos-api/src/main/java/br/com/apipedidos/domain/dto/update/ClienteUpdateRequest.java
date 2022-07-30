@@ -1,5 +1,6 @@
 package br.com.apipedidos.domain.dto.update;
 
+import br.com.apipedidos.domain.entity.TipoPessoaEnum;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
@@ -10,7 +11,7 @@ public class ClienteUpdateRequest {
 	private String nome;
 	
 	@NotEmpty(message = "Por favor, informe o tipo pessoa fisica ou jurídica")
-	private String tipoPessoa;
+	private TipoPessoaEnum tipoPessoa;
 	
 	@NotEmpty(message = "Por favor, informe o telefone")
 	private String telefone;

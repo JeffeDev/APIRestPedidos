@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "pedido-itens")
+import jakarta.persistence.Entity;
+
+//@Document(collection = "pedido-itens")
+@Entity(name = "pedido-itens")
 public class PedidoItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

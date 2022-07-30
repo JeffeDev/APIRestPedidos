@@ -6,8 +6,11 @@ import java.math.BigDecimal;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.persistence.Entity;
 
-@Document(collection = "produto")
+
+//@Document(collection = "produto")
+@Entity(name = "produto")
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
