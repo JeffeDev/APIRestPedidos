@@ -1,61 +1,62 @@
 package br.com.apipedidos.controller;
 
-
+import java.net.URI;
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.apipedidos.domain.dto.create.ClienteCreateRequest;
-import br.com.apipedidos.domain.dto.response.ClienteResponse;
-import br.com.apipedidos.domain.dto.update.ClienteUpdateRequest;
-import br.com.apipedidos.services.ClienteService;
-import jakarta.validation.Valid;
+import br.com.apipedidos.domain.dto.ClienteDTO;
+import br.com.apipedidos.domain.dto.ClienteFormDTO;
+import br.com.apipedidos.domain.model.Cliente;
+import br.com.apipedidos.repository.ClienteRepository;
 
 @RestController
+@RequestMapping("/cliente")
 public class ClienteController {
-	
 	@Autowired
-    private ClienteService service;
-
-	@GetMapping("/")
-	public String Teste() {
-		return "Oi";
+	private ClienteRepository clienteRepository;
+	
+	@GetMapping
+	public List<ClienteDTO> lista(){
+		List<Cliente> cliente = clienteRepository.findAll();
+		return ClienteDTO.converter(cliente);
 	}
-	 
-    @GetMapping("/cliente")
-    public ResponseEntity<List<ClienteResponse>>  getAll() {
-        var result = service.listAll();
-        return ResponseEntity.ok(result);
-    }
-
-    @PostMapping("/cliente")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ClienteResponse> create(@RequestBody @Valid ClienteCreateRequest request) {
-        var result = service.create(request);
-        return ResponseEntity.ok(result);
-    }
-
-    @PatchMapping("/cliente/{id}")
-    public ResponseEntity<ClienteResponse> update(
-            @PathVariable("id") String id,
-            @RequestBody @Valid ClienteUpdateRequest updateRequest) {
-        var cliente = service.update(id, updateRequest);
-        return ResponseEntity.ok(cliente);
-    }
-
-    @DeleteMapping("/cliente-deletar/{id}")
-    public ResponseEntity<ClienteResponse> delete(@PathVariable("id") String id) {
-        var cliente = service.delete(id);
-        return ResponseEntity.ok(cliente);
-    }
+	
+	@PostMapping
+	public ResponseEntity<ClienteDTO> cadastrar(@RequestBody @Valid ClienteFormDTO formApi, UriComponentsBuilder uriBuilder) {
+		Cliente cliente = formApi.converter(clienteRepository);
+		System.out.println("Salvando cliente "+ cliente);
+		clienteRepository.save(cliente);
+		
+		URI uri = uriBuilder.path("/cliente/{id}").buildAndExpand(cliente.getId_cli()).toUri();
+		
+		return ResponseEntity.created(uri).body(new ClienteDTO(cliente));
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<ClienteDTO> detalhar(@PathVariable Long id) {
+		Optional<Cliente> cliente = clienteRepository.findById(id);
+		if (cliente.isPresent()) {
+			return ResponseEntity.ok(new ClienteDTO(cliente.get()) );
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<ClienteDTO> remover(@PathVariable Long id) {
+		clienteRepository.deleteById(id);
+			return ResponseEntity.ok().build();
+	}
 }

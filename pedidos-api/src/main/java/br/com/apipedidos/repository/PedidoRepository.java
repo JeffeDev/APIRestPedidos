@@ -1,15 +1,17 @@
 package br.com.apipedidos.repository;
 
+
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.apipedidos.domain.model.Produto;
+import br.com.apipedidos.domain.model.Pedido;
 
-public interface ProdutoRepository  extends JpaRepository<Produto, Long> {
+public interface PedidoRepository  extends JpaRepository<Pedido, Long> {
 
-	Optional<Produto> findById(Long id);
+	Optional<Pedido> findById(Long id);
 
 	void deleteById(Long id);
-	
+
+
 }
