@@ -7,7 +7,7 @@
   </p>
 </div>
 
-## ⚙️ [Mais Detalhes Clique aqui](https://github.com/JeffeDev/APIRestPedidos/tree/master/pedidos-api) 
+## ⚙️ [Mais Detalhes Clique aqui](https://github.com/JeffeDev/APIRestPedidos/tree/master/appexpandirvendas)
 
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
@@ -25,7 +25,7 @@
 
 ## 📒 Conteúdos  
 
-**BackEnd**: [Consumir API cliente, produto, pedido e itenspedido e exibir dados criar um gerador de imagens para os produtos](https://github.com/JeffeDev)
+**BackEnd**: [Consumir API cliente, produto, pedido e itenspedido e exibir dados criar um gerador de imagens para os produtos](https://github.com/JeffeDev/APIRestPedidos/tree/master/appexpandirvendas)
 
 **FrontEnd**: construir um APP para ler e enviar dados via Rest para o Back, utilizando ferramentas TotalCross com Spring Framework e um banco de dados NoSQL.
 
@@ -52,7 +52,4 @@ Deve utilizar o formato JSON para integração entre as aplicações.
 
 ## ❔ Dúvidas?!
 Se tiver alguma dúvida sobre este repositório, envie para jeffe.info@gmail.com
-
-
-
 
