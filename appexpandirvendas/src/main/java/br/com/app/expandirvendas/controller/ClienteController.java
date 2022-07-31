@@ -27,36 +27,42 @@ import br.com.app.expandirvendas.model.Cliente;
 public class ClienteController {
 	@Autowired
 	private ClienteRepository clienteRepository;
-	
+
 	@GetMapping
-	public List<ClienteDTO> lista(){
-		List<Cliente> cliente = clienteRepository.findAll();
-		return ClienteDTO.converter(cliente);
+	public List<ClienteDTO> lista(String nome) {
+		if (nome == null) {
+			List<Cliente> cliente = clienteRepository.findAll();
+			return ClienteDTO.converter(cliente);
+		}else {
+			List<Cliente> cliente = clienteRepository.findByNome_cli(nome);
+			return ClienteDTO.converter(cliente);		
+		}
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<ClienteDTO> cadastrar(@RequestBody @Valid ClienteFormDTO formApi, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<ClienteDTO> cadastrar(@RequestBody @Valid ClienteFormDTO formApi,
+			UriComponentsBuilder uriBuilder) {
 		Cliente cliente = formApi.converter(clienteRepository);
-		System.out.println("Salvando cliente "+ cliente);
+		System.out.println("Salvando cliente " + cliente);
 		clienteRepository.save(cliente);
-		
+
 		URI uri = uriBuilder.path("/cliente/{id}").buildAndExpand(cliente.getId_cli()).toUri();
-		
+
 		return ResponseEntity.created(uri).body(new ClienteDTO(cliente));
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<ClienteDTO> detalhar(@PathVariable Long id) {
 		Optional<Cliente> cliente = clienteRepository.findById(id);
 		if (cliente.isPresent()) {
-			return ResponseEntity.ok(new ClienteDTO(cliente.get()) );
+			return ResponseEntity.ok(new ClienteDTO(cliente.get()));
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
-	@DeleteMapping("/{id}")
+
+	@DeleteMapping("/del/{id}")
 	public ResponseEntity<ClienteDTO> remover(@PathVariable Long id) {
 		clienteRepository.deleteById(id);
-			return ResponseEntity.ok().build();
+		return ResponseEntity.ok().build();
 	}
 }

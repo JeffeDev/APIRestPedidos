@@ -1,12 +1,14 @@
 package br.com.app.expandirvendas.dto;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import br.com.app.expandirvendas.dao.repository.PedidoRepository;
+import br.com.app.expandirvendas.model.ItensPedido;
 import br.com.app.expandirvendas.model.Pedido;
 import br.com.app.expandirvendas.model.PedidoStatusEnum;
 import lombok.AllArgsConstructor;
@@ -27,12 +29,12 @@ public class PedidoFormDTO {
 	@Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "deve ser uma data no formato dd/MM/yyyy")
 	private String dataEntrega_pedi;
 	
-	@NotNull
-	@DecimalMin(value = "0.1")
 	private BigDecimal totalPedido_pedi;
 
 	@NotNull(message = "Status deve ser ABERTO ou FECHADO")
 	private PedidoStatusEnum statusPedido_pedi = PedidoStatusEnum.ABERTO;
+	
+	private List<ItensPedido> pedidoItens_pedi = new ArrayList<>();
 	
 	
 	public PedidoFormDTO(Pedido pedidoVenda) {

@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import br.com.app.expandirvendas.model.ItensPedido;
 
-public interface ItemRepository  extends JpaRepository<ItensPedido, Long> {
+public interface ItensPedidoRepository  extends JpaRepository<ItensPedido, Long> {
 
 	Optional<ItensPedido> findById(Long id);
 

@@ -10,29 +10,31 @@
 ## ⚙️ Funcionalidades 
 
 - GET de 	/cliente 
-			/pedido
-			/produto 
+		/produto
+		/pedido
+		/pedido-itens 
 	
 
 - POST de 	/cliente 
-			/pedido 
-			/produto 
+		/produto
+		/pedido
+		/pedido-itens
 
 - PATCH 
 * /cliente/{id} 
-		update altera tabela de clientes
+		consulta cliente por id
 	
 * /pedido/{id}
- 		update altera tabela de pedido-de-venda
+ 		consulta pedido-de-venda por id
  		
  * /produto/{id}
- 		update altera tabela de produto e produto-imagem
+ 		consulta produto por id
   		
  		
 		
-- DELETE de 	/cliente/id
- 				/pedido/id 
- 				/produto/id 
+- DELETE  	/cliente/del/{id}
+ 		/pedido/del/{id} 
+ 		/produto/del/{id}
 
 
 
@@ -75,141 +77,164 @@ Diagrama de Componentes
 
 
 
-#### @Document(collection = "cliente")
+#### @Document("cliente")
 ````
-	@Id
-	private String id;
+	@NotNull(message = "Por favor, informe o nome do cliente")
+	private String nome_cli;
 	
-	private String nome;
-	private String tipoPessoa="FISICA";
-	private String telefone;
-	private String email;
-	private String documento; //cpf ou cnpj
+	@Enumerated(EnumType.STRING)
+	@NotNull(message = "Por favor, informe o tipo de pessoa FISICA ou JURIDICA")
+	private ClienteTipoPessoaEnum tipoPessoa_cli = ClienteTipoPessoaEnum.FISICA;
+
+	private String telefone_cli;
+	
+	@Email @NotNull(message = "Por favor, informe o email do cliente")
+	private String email_cli;
+	
+	@NotNull(message = "Por favor, informe o documento do cliente CPF ou CNPJ para pessoa Juridica")
+	private String documento_cli;
 
 ````
 
-#### GET cliente e POST cliente
+
+#### POST cadastrar novo cliente
 ````
 https://localhost:8080/cliente
 
 
     {
-    "nome": "fulano", 
-    "tipoPessoa": "FISICA", 
-    "telefone": "(48)99999-5555", 
-    "email": "email@gmail.com",
-    "documento": "111.111.111-11"
+        "nome_cli": "Jefferson Cesar de Souza",
+        "tipoPessoa_cli": "FISICA",
+        "telefone_cli": "(48) 99967-9641",
+        "email_cli": "jeffe.info@gmail.com",
+        "documento_cli": "122.051.112-12"
+    }
+
+
+
+Request:
+
+    {
+        "id_cli": 1,
+        "nome_cli": "Jefferson Cesar de Souza",
+        "tipoPessoa_cli": "FISICA",
+        "telefone_cli": "(48) 99967-9641",
+        "email_cli": "jeffe.info@gmail.com",
+        "documento_cli": "122.051.112-12"
+    }
+
+````
+
+#### GET consultar lista de clientes
+````
+https://localhost:8080/cliente
+
+
+    {
+        "id_cli": 1,
+        "nome_cli": "Jefferson Cesar de Souza",
+        "tipoPessoa_cli": "FISICA",
+        "telefone_cli": "(48) 99967-9641",
+        "email_cli": "ca.info@gmail.com",
+        "documento_cli": "122.051.112-12"
+    },
+    {
+        "id_cli": 2,
+        "nome_cli": "Joao Cesar",
+        "tipoPessoa_cli": "FISICA",
+        "telefone_cli": "(12) 11111-9641",
+        "email_cli": "joao.info@gmail.com",
+        "documento_cli": "122.222.444-32"
     }
     
+````
+
+#### GET consultar clientes por id
+````
+https://localhost:8080/cliente/1
+
+
+    {
+        "id_cli": 1,
+        "nome_cli": "Jefferson Cesar de Souza",
+        "tipoPessoa_cli": "FISICA",
+        "telefone_cli": "(48) 99967-9641",
+        "email_cli": "ca.info@gmail.com",
+        "documento_cli": "122.051.112-12"
+    }    
 
 ````
 
-#### GET cliente e POST cliente Update
-````
-https://localhost:8080/cliente/{id}
-````
-
-#### DELETE Cliente e PATCH cliente-deletar
-````
-https://localhost:8080/cliente-deletar/{id}
-
-localhost:8080/cliente-deletar/62e07002b69a2d785bbb443d
-
-````
 
 
-#### @Document(collection = "produto")
+#### @Document("produto")
 ````
-	@Id
-	private String id;
+	@NotNull(message = "Por favor, informe o nome do cliente")
+	private String nome_prod;
 	
-	private String nome;
-	private String image;
-	private BigDecimal preco;
+	@NotNull(message = "Por favor, informe o path da imagem")
+	private String imagem_prod;
+	
+	@Min(value=0, message = "Por favor, informe o preço do produto")
+	@DecimalMin(value = "0.1")
+	private BigDecimal preco_prod;
 
 ````
 
-#### GET produto e POST produto
+
+#### POST cadastrar novo produto
 ````
 https://localhost:8080/produto
-````
 
-#### GET produto e POST produto Update
-
-````
-https://localhost:8080/produto/{id}
-````
-
-#### DELETE Produto e PATCH produto-deletar
-````
-https://localhost:8080/produto-deletar/{id}
-````
+    {
+        "nome_prod": "Mouse",
+        "imagem_prod": "https://images-na.ssl-images-amazon.com/images/I/51QKWGgl2rL._SY344_BO1,204,203,200_QL70_ML2_.jpg",
+        "preco_prod": 1200.00
+    }
 
 
+Request:
 
-#### @Document(collection = "pedido-de-venda")
-````
-	@Id
-	private String id;
-	
-	private Long numeroPedido;
-	private String cliente_id;
-	private Date dataEmissao;
-	private Date dataEntrega;
-	private BigDecimal totalPedido;
-	
-	private String statusPedido="ABERTO";
+    {
+        "id_prod": 1,
+        "nome_prod": "Mouse",
+        "imagem_prod": "https://images-na.ssl-images-amazon.com/images/I/51QKWGgl2rL._SY344_BO1,204,203,200_QL70_ML2_.jpg",
+        "preco_prod": 1200.00
+    }
 
 ````
 
-#### GET pedido e POST pedido
+#### GET consultar lista de produtos
 ````
-https://localhost:8080/pedido
-````
-
-#### GET pedido e POST pedido Update
-````
-https://localhost:8080/pedido/{id}
-````
-
-#### DELETE Pedido e PATCH pedido-deletar
-````
-https://localhost:8080/pedido-deletar/{id}
-````
+https://localhost:8080/produto
 
 
-
-#### @Document(collection = "pedido-itens")
-````
-	@Id
-	private String id;
-	
-	private String produto_id;
-	private String pedido_id;
-	
-	private Integer sequencia;
-	private BigDecimal quantidade;
-	private BigDecimal precoUnitario;
-	private BigDecimal desconto;
-	private BigDecimal totalItem;
-
+    {
+        "id_prod": 1,
+        "nome_prod": "Mouse",
+        "imagem_prod": "https://images-na.ssl-images-amazon.com/images/I/51QKWGgl2rL._SY344_BO1,204,203,200_QL70_ML2_.jpg",
+        "preco_prod": 1200.00
+    },
+    {
+        "id_prod": 2,
+        "nome_prod": "Note",
+        "imagem_prod": "https://images-na.ssl-images-amazon.com/images/I/51QKWGgl2rL._SY344_BO1,204,203,200_QL70_ML2_.jpg",
+        "preco_prod": 1400.00
+    }
+    
 ````
 
+#### GET consultar produto por id
+````
+https://localhost:8080/produto/1
 
+    {
+        "id_prod": 1,
+        "nome_prod": "Mouse",
+        "imagem_prod": "https://images-na.ssl-images-amazon.com/images/I/51QKWGgl2rL._SY344_BO1,204,203,200_QL70_ML2_.jpg",
+        "preco_prod": 1200.00
+    }  
 
-#### GET itenspedido e POST itenspedido
-````
-https://localhost:8080/itenspedido
-````
-
-#### GET itenspedido e POST itenspedido Update
-````
-https://localhost:8080/itenspedido/{id}
-````
-
-#### DELETE itenspedido e PATCH itenspedido-deletar
-````
-https://localhost:8080/itenspedido-deletar/{id}
 ````
 
 

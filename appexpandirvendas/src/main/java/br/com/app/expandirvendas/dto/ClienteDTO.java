@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.NotNull;
 
 import br.com.app.expandirvendas.model.Cliente;
 import br.com.app.expandirvendas.model.ClienteTipoPessoaEnum;

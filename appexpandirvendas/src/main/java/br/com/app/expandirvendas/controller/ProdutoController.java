@@ -55,7 +55,7 @@ public class ProdutoController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/del/{id}")
 	public ResponseEntity<ProdutoDTO> remover(@PathVariable Long id) {
 		produtoRepository.deleteById(id);
 			return ResponseEntity.ok().build();
