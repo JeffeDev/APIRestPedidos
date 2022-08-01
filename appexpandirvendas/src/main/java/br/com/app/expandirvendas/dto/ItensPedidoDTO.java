@@ -4,9 +4,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Min;
-
 import br.com.app.expandirvendas.model.ItensPedido;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +20,7 @@ public class ItensPedidoDTO {
 	private BigDecimal precoUnitario_item;
 	private BigDecimal desconto_item;
 	private BigDecimal totalItem_item;
-
+	
 	public ItensPedidoDTO(ItensPedido itens) {
 		this.pedido_id = itens.getPedido_id();
 		this.produto_id = itens.getProduto_id();

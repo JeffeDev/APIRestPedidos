@@ -112,7 +112,7 @@ https://localhost:8080/cliente
 
 
 
-Request:
+Response: 201 - Created
 
     {
         "id_cli": 1,
@@ -193,7 +193,7 @@ https://localhost:8080/produto
     }
 
 
-Request:
+Response: 201 - Created
 
     {
         "id_prod": 1,

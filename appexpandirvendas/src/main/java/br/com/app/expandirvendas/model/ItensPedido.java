@@ -28,8 +28,7 @@ public class ItensPedido {
 	}
 
 	public ItensPedido(Long id_item, Long produto_id, Long pedido_id, Integer sequencia_item,
-			BigDecimal quantidade_item, BigDecimal precoUnitario_item, BigDecimal desconto_item,
-			BigDecimal totalItem_item) {
+			BigDecimal quantidade_item, BigDecimal precoUnitario_item, BigDecimal desconto_item, BigDecimal totalItem_item) {
 		super();
 		this.id_item = id_item;
 		this.produto_id = produto_id;

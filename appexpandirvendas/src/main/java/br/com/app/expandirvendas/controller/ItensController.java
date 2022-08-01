@@ -24,7 +24,7 @@ import br.com.app.expandirvendas.model.ItensPedido;
 
 @RestController
 @RequestMapping("/itens")
-public class ItensPedidoController {
+public class ItensController {
 	@Autowired
 	private ItensPedidoRepository itensPedidoRepository;
 
