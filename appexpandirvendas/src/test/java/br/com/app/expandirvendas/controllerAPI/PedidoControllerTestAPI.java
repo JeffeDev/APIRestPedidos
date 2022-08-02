@@ -75,13 +75,36 @@ class PedidoControllerTestAPI {
 				.post(uri)
 				.content(json)
 				.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(MockMvcResultMatchers.status().is(201));
+			.andExpect(MockMvcResultMatchers.status().is(400));
 			
 		}catch (Exception e) {
 			System.out.println("Excessão: " + e.getMessage());
 		}
 	}
 	
+	@Test
+	void naoDeveriaGravarPedidoComIdClienteNulo() {
+		try {
+			URI uri = new URI("/pedido");
+			String json ="    {\r\n"
+					+ "        \"numero_pedi\": 1,\r\n"
+					+ "        \"cliente_id\": ,\r\n"
+					+ "        \"dataEmissao_pedi\": \"31/07/2022\",\r\n"
+					+ "        \"dataEntrega_pedi\": \"31/07/2022\",\r\n"
+					+ "        \"totalPedido_pedi\": 0.00,\r\n"
+					+ "        \"status_pedi\": \"ABERTO\"\r\n"
+					+ "    }";
+
+			mockMvc.perform(MockMvcRequestBuilders
+				.post(uri)
+				.content(json)
+				.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(MockMvcResultMatchers.status().is(400));
+			
+		}catch (Exception e) {
+			System.out.println("Excessão: " + e.getMessage());
+		}
+	}
 	
 	
 	
