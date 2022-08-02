@@ -11,6 +11,9 @@ import org.springframework.test.context.ActiveProfiles;
 /*
  * @author: Jefferson César de Souza
  * 			Teste Unitário Usando Selenium
+ *   
+ * Este teste deve ser executado com o sistema ativo, para poder 
+ * tetar as URLs
  * 
  * @version:Usar JUnit5 e import org.junit.jupiter.api
  * 			no JUnit 5 uma nova classe chamada Assertions, presente 

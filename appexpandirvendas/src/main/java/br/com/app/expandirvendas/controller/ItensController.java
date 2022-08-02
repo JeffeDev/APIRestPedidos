@@ -1,5 +1,6 @@
 package br.com.app.expandirvendas.controller;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,9 @@ import br.com.app.expandirvendas.model.ItensPedido;
 
 @RestController
 @RequestMapping("/itens")
-public class ItensController {
+public class ItensController implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private ItensPedidoRepository itensPedidoRepository;
 
@@ -41,7 +44,7 @@ public class ItensController {
 		System.out.println("Salvando pedido " + itens);
 		itensPedidoRepository.save(itens);
 
-		URI uri = uriBuilder.path("/itens/{id}").buildAndExpand(itens.getId_item()).toUri();
+		URI uri = uriBuilder.path("/itens/{id}").buildAndExpand(itens.getId()).toUri();
 
 		return ResponseEntity.created(uri).body(new ItensPedidoDTO(itens));
 	}

@@ -12,13 +12,13 @@ import lombok.Data;
 @AllArgsConstructor
 public class ProdutoDTO {
 	
-	private Long id_prod;
+	private Long id;
 	private String nome_prod;
 	private String imagem_prod;
 	private BigDecimal preco_prod;
 	
 	public ProdutoDTO(Produto produto) {
-		this.id_prod = produto.getId_prod();
+		this.id = produto.getId_prod();
 		this.nome_prod = produto.getNome_prod();
 		this.imagem_prod = produto.getImagem_prod();
 		this.preco_prod = produto.getPreco_prod();

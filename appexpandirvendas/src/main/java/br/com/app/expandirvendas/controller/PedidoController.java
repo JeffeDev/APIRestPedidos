@@ -1,5 +1,6 @@
 package br.com.app.expandirvendas.controller;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +27,9 @@ import br.com.app.expandirvendas.model.Pedido;
 
 @RestController
 @RequestMapping("/pedido")
-public class PedidoController {
+public class PedidoController implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	

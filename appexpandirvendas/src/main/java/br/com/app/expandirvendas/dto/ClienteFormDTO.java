@@ -3,6 +3,7 @@ package br.com.app.expandirvendas.dto;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import br.com.app.expandirvendas.dao.repository.ClienteRepository;
@@ -15,19 +16,19 @@ import lombok.Data;
 @AllArgsConstructor
 public class ClienteFormDTO {
 	
-	@NotNull(message = "Por favor, informe o nome do cliente")
+	@NotEmpty(message = "Por favor, informe o nome do cliente")
 	private String nome_cli;
 	
 	@Enumerated(EnumType.STRING)
-	@NotNull(message = "Por favor, informe o tipo de pessoa FISICA ou JURIDICA")
+	@NotEmpty(message = "Por favor, informe o tipo de pessoa FISICA ou JURIDICA")
 	private ClienteTipoPessoaEnum tipoPessoa_cli = ClienteTipoPessoaEnum.FISICA;
 
 	private String telefone_cli;
 	
-	@Email @NotNull(message = "Por favor, informe o email do cliente")
+	@Email @NotEmpty(message = "Por favor, informe o email do cliente")
 	private String email_cli;
 	
-	@NotNull(message = "Por favor, informe o documento do cliente CPF ou CNPJ para pessoa Juridica")
+	@NotEmpty(message = "Por favor, informe o documento do cliente CPF ou CNPJ para pessoa Juridica")
 	private String documento_cli;
 	
 	public ClienteFormDTO() {

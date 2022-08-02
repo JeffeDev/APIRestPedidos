@@ -11,6 +11,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ItensPedidoDTO {
+	private Long id;
+	
 	private Long produto_id;
 	private Long pedido_id;
 	
@@ -22,6 +24,7 @@ public class ItensPedidoDTO {
 	private BigDecimal totalItem_item;
 	
 	public ItensPedidoDTO(ItensPedido itens) {
+		this.id = itens.getId();
 		this.pedido_id = itens.getPedido_id();
 		this.produto_id = itens.getProduto_id();
 		this.sequencia_item = itens.getSequencia_item();

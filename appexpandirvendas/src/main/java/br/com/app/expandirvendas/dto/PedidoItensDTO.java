@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import br.com.app.expandirvendas.dao.repository.ItensPedidoRepository;
 import br.com.app.expandirvendas.model.ItensPedido;
 import br.com.app.expandirvendas.model.Pedido;
@@ -19,7 +17,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class PedidoItensDTO {
 	
-	private Long id_pedi;
+	private ItensPedidoRepository itensRepository = null;
+	
+	private Long id;
 	private Long numero_pedi;
 	private Long cliente_id;
 	private String dataEmissao_pedi;
@@ -30,9 +30,8 @@ public class PedidoItensDTO {
     private List<ItensPedido> itens_pedi = new ArrayList<>();
 	
 	public PedidoItensDTO(Pedido pedidoVenda) {
-		ItensPedidoRepository itensRepository = null;
 		
-		this.id_pedi = pedidoVenda.getId_pedi();
+		this.id = pedidoVenda.getId_pedi();
 		this.numero_pedi = pedidoVenda.getNumeroPedido_pedi();
 		this.cliente_id = pedidoVenda.getCliente_id();
 		this.dataEmissao_pedi = pedidoVenda.getDataEmissao_pedi();

@@ -1,5 +1,6 @@
 package br.com.app.expandirvendas.controller;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,9 @@ import br.com.app.expandirvendas.model.Cliente;
 
 @RestController
 @RequestMapping("/cliente")
-public class ClienteController {
+public class ClienteController implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private ClienteRepository clienteRepository;
 
@@ -61,7 +64,7 @@ public class ClienteController {
 	}
 
 	@DeleteMapping("/del/{id}")
-	public ResponseEntity<ClienteDTO> remover(@PathVariable Long id) {
+	public ResponseEntity<Cliente> remover(@PathVariable Long id) {
 		clienteRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}

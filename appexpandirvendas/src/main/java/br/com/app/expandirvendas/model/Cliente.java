@@ -1,5 +1,6 @@
 package br.com.app.expandirvendas.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -10,10 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "TBL_CLIENTE")
-public class Cliente {
+public class Cliente implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_cli;
+	private Long id;
+	
 	private String nome_cli;
 	
 	@Enumerated(EnumType.STRING)
@@ -28,7 +31,7 @@ public class Cliente {
 	public Cliente(Long id_cli, String nome_cli, ClienteTipoPessoaEnum tipoPessoa_cli, String telefone_cli,
 			String email_cli, String documento_cli) {
 		super();
-		this.id_cli = id_cli;
+		this.id = id_cli;
 		this.nome_cli = nome_cli;
 		this.tipoPessoa_cli = tipoPessoa_cli;
 		this.telefone_cli = telefone_cli;
@@ -47,7 +50,7 @@ public class Cliente {
 	}
 
 	public Long getId_cli() {
-		return id_cli;
+		return id;
 	}
 
 	public String getNome_cli() {
@@ -72,7 +75,7 @@ public class Cliente {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_cli);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -84,12 +87,12 @@ public class Cliente {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(id_cli, other.id_cli);
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [id_cli=" + id_cli + ", nome_cli=" + nome_cli + ", tipoPessoa_cli=" + tipoPessoa_cli
+		return "Cliente [id_cli=" + id + ", nome_cli=" + nome_cli + ", tipoPessoa_cli=" + tipoPessoa_cli
 				+ ", telefone_cli=" + telefone_cli + ", email_cli=" + email_cli + ", documento_cli=" + documento_cli
 				+ "]";
 	}

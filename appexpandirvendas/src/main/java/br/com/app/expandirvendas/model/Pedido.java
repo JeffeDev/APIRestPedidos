@@ -1,5 +1,6 @@
 package br.com.app.expandirvendas.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity(name = "TBL_PEDIDO")
-public class Pedido {
+public class Pedido implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_pedi;
+	private Long id;
+	
 	private Long numero_pedi;
 	private Long cliente_id;
 	
@@ -37,7 +40,7 @@ public class Pedido {
 	public Pedido(Long id_pedi, Long numeroPedido_pedi, Long cliente_id, String dataEmissao_pedi,
 			String dataEntrega_pedi, BigDecimal totalPedido_pedi, PedidoStatusEnum statusPedido_pedi) {
 		
-		this.id_pedi = id_pedi;
+		this.id = id_pedi;
 		this.numero_pedi = numeroPedido_pedi;
 		this.cliente_id = cliente_id;
 		this.dataEmissao_pedi = dataEmissao_pedi;
@@ -61,7 +64,7 @@ public class Pedido {
 	public Pedido(Long id_pedi, Long numero_pedi, Long cliente_id, String dataEmissao_pedi, String dataEntrega_pedi,
 			BigDecimal totalPedido_pedi, PedidoStatusEnum status_pedi, List<ItensPedido> pedidoItens_pedi) {
 		super();
-		this.id_pedi = id_pedi;
+		this.id = id_pedi;
 		this.numero_pedi = numero_pedi;
 		this.cliente_id = cliente_id;
 		this.dataEmissao_pedi = dataEmissao_pedi;
@@ -73,14 +76,14 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [id_pedi=" + id_pedi + ", numeroPedido_pedi=" + numero_pedi + ", cliente_id=" + cliente_id
+		return "Pedido [id_pedi=" + id + ", numeroPedido_pedi=" + numero_pedi + ", cliente_id=" + cliente_id
 				+ ", dataEmissao_pedi=" + dataEmissao_pedi + ", dataEntrega_pedi=" + dataEntrega_pedi
 				+ ", totalPedido_pedi=" + totalPedido_pedi + ", statusPedido_pedi=" + status_pedi
 				+ "]";
 	}
 
 	public Long getId_pedi() {
-		return id_pedi;
+		return id;
 	}
 
 	public Long getNumeroPedido_pedi() {
@@ -112,7 +115,7 @@ public class Pedido {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_pedi);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -124,7 +127,7 @@ public class Pedido {
 		if (getClass() != obj.getClass())
 			return false;
 		Pedido other = (Pedido) obj;
-		return Objects.equals(id_pedi, other.id_pedi);
+		return Objects.equals(id, other.id);
 	}
 	
 

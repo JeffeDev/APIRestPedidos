@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ClienteDTO {
-	private Long id_cli;
+	private Long id;
 	private String nome_cli;
 	
 	@Enumerated(EnumType.STRING)
@@ -24,7 +24,7 @@ public class ClienteDTO {
 	private String documento_cli;
 	
 	public ClienteDTO(Cliente cliente) {
-		this.id_cli = cliente.getId_cli();
+		this.id = cliente.getId_cli();
 		this.nome_cli = cliente.getNome_cli();
 		this.tipoPessoa_cli = cliente.getTipoPessoa_cli();
 		this.telefone_cli = cliente.getTelefone_cli();

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import br.com.app.expandirvendas.dao.repository.ProdutoRepository;
 import br.com.app.expandirvendas.model.Produto;
@@ -15,10 +15,10 @@ import lombok.Data;
 @AllArgsConstructor
 public class ProdutoFormDTO {
 	
-	@NotNull(message = "Por favor, informe o nome do cliente")
+	@NotEmpty(message = "Por favor, informe o nome do cliente")
 	private String nome_prod;
 	
-	@NotNull(message = "Por favor, informe o path da imagem")
+	@NotEmpty(message = "Por favor, informe o path da imagem")
 	private String imagem_prod;
 	
 	@Min(value=0, message = "Por favor, informe o preço do produto")

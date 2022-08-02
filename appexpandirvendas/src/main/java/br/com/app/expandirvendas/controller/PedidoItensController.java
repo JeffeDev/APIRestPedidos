@@ -1,5 +1,6 @@
 package br.com.app.expandirvendas.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,8 @@ import br.com.app.expandirvendas.model.Pedido;
 
 @RestController
 @RequestMapping("/pedidos-itens")
-public class PedidoItensController {
+public class PedidoItensController implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private PedidoRepository pedidoRepository;

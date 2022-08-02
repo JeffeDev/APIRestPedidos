@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class PedidoDTO {
-	private Long id_pedi;
+	private Long id;
 	private Long numero_pedi;
 	private Long cliente_id;
 	private String dataEmissao_pedi;
@@ -26,7 +26,7 @@ public class PedidoDTO {
     private List<ItensPedido> pedidoItens_pedi = new ArrayList<>();
 	
 	public PedidoDTO(Pedido pedidoVenda) {
-		this.id_pedi = pedidoVenda.getId_pedi();
+		this.id = pedidoVenda.getId_pedi();
 		this.numero_pedi = pedidoVenda.getNumeroPedido_pedi();
 		this.cliente_id = pedidoVenda.getCliente_id();
 		this.dataEmissao_pedi = pedidoVenda.getDataEmissao_pedi();

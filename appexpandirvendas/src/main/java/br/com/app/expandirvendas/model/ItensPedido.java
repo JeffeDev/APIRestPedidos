@@ -1,5 +1,6 @@
 package br.com.app.expandirvendas.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -9,11 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "TBL_ITENS_PEDIDO")
-public class ItensPedido {
+public class ItensPedido implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_item;
+	private Long id;
 	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private Long produto_id;
 	private Long pedido_id;
 	
@@ -30,7 +36,7 @@ public class ItensPedido {
 	public ItensPedido(Long id_item, Long produto_id, Long pedido_id, Integer sequencia_item,
 			BigDecimal quantidade_item, BigDecimal precoUnitario_item, BigDecimal desconto_item, BigDecimal totalItem_item) {
 		super();
-		this.id_item = id_item;
+		this.id = id_item;
 		this.produto_id = produto_id;
 		this.pedido_id = pedido_id;
 		this.sequencia_item = sequencia_item;
@@ -52,10 +58,10 @@ public class ItensPedido {
 		this.totalItem_item = totalItem_item;
 	}
 
-	public Long getId_item() {
-		return id_item;
+	public Long getId() {
+		return id;
 	}
-
+	
 	public Long getProduto_id() {
 		return produto_id;
 	}
@@ -86,7 +92,7 @@ public class ItensPedido {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_item, pedido_id);
+		return Objects.hash(id, pedido_id);
 	}
 
 	@Override
@@ -98,15 +104,16 @@ public class ItensPedido {
 		if (getClass() != obj.getClass())
 			return false;
 		ItensPedido other = (ItensPedido) obj;
-		return Objects.equals(id_item, other.id_item) && Objects.equals(pedido_id, other.pedido_id);
+		return Objects.equals(id, other.id) && Objects.equals(pedido_id, other.pedido_id);
 	}
 
 	@Override
 	public String toString() {
-		return "ItensPedido [id_item=" + id_item + ", produto_id=" + produto_id + ", pedido_id=" + pedido_id
+		return "ItensPedido [id_item=" + id + ", produto_id=" + produto_id + ", pedido_id=" + pedido_id
 				+ ", sequencia_item=" + sequencia_item + ", quantidade_item=" + quantidade_item
 				+ ", precoUnitario_item=" + precoUnitario_item + ", desconto_item=" + desconto_item
 				+ ", totalItem_item=" + totalItem_item + "]";
 	}
-	
+
+
 }

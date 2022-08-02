@@ -1,5 +1,6 @@
 package br.com.app.expandirvendas.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -9,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "TBL_PRODUTO")
-public class Produto {
+public class Produto implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_prod;
+	private Long id;
+	
 	private String nome_prod;
 	private String imagem_prod;
 	private BigDecimal preco_prod;
@@ -27,7 +30,7 @@ public class Produto {
 	}
 
 	public Long getId_prod() {
-		return id_prod;
+		return id;
 	}
 
 	public String getNome_prod() {
@@ -44,13 +47,13 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "Produto [id_prod=" + id_prod + ", nome_prod=" + nome_prod + ", imagem_prod=" + imagem_prod
+		return "Produto [id_prod=" + id + ", nome_prod=" + nome_prod + ", imagem_prod=" + imagem_prod
 				+ ", preco_prod=" + preco_prod + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_prod);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -62,7 +65,7 @@ public class Produto {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		return Objects.equals(id_prod, other.id_prod);
+		return Objects.equals(id, other.id);
 	}
 
 }
