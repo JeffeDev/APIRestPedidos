@@ -15,7 +15,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class PedidoDTO {
-	private Long id;
 	private Long numero_pedi;
 	private Long cliente_id;
 	private String dataEmissao_pedi;

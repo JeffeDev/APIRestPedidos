@@ -16,10 +16,6 @@ public class ItensPedido implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	private Long produto_id;
 	private Long pedido_id;
 	

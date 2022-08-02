@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import br.com.app.expandirvendas.dao.repository.PedidoRepository;
@@ -18,9 +17,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class PedidoFormDTO {
-	
-	@NotEmpty(message = "Numero do Pedido Inválido")
-	private Long numero_pedi;
 	
 	@NotEmpty(message = "Id Cliente Inválido")
 	private Long cliente_id;
@@ -42,15 +38,15 @@ public class PedidoFormDTO {
 	
 	
 	public PedidoFormDTO(Pedido pedidoVenda) {
-		this.numero_pedi = pedidoVenda.getNumeroPedido_pedi();
 		this.cliente_id = pedidoVenda.getCliente_id();
 		this.dataEmissao_pedi = pedidoVenda.getDataEmissao_pedi();
 		this.dataEntrega_pedi = pedidoVenda.getDataEntrega_pedi();
 		this.totalPedido_pedi = pedidoVenda.getTotalPedido_pedi();
 		this.statusPedido_pedi = pedidoVenda.getStatusPedido_pedi();
+		this.pedidoItens_pedi = pedidoVenda.getItens_pedi();
 	}
 
 	public Pedido converter(PedidoRepository pedidoRepository ) {
-		return new Pedido(numero_pedi, cliente_id, dataEmissao_pedi, dataEntrega_pedi, totalPedido_pedi, statusPedido_pedi);
+		return new Pedido(cliente_id, dataEmissao_pedi, dataEntrega_pedi, totalPedido_pedi, statusPedido_pedi, pedidoItens_pedi);
 	}	
 }

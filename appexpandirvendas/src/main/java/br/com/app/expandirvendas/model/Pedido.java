@@ -36,6 +36,17 @@ public class Pedido implements Serializable{
 	public Pedido() {
 	}
 
+	public Pedido(Long cliente_id, String dataEmissao_pedi, String dataEntrega_pedi, BigDecimal totalPedido_pedi,
+			PedidoStatusEnum status_pedi, List<ItensPedido> itens_pedi) {
+		super();
+		this.cliente_id = cliente_id;
+		this.dataEmissao_pedi = dataEmissao_pedi;
+		this.dataEntrega_pedi = dataEntrega_pedi;
+		this.totalPedido_pedi = totalPedido_pedi;
+		this.status_pedi = status_pedi;
+		this.itens_pedi = itens_pedi;
+	}
+
 	public Pedido(Long cliente_id, String dataEmissao_pedi,
 			String dataEntrega_pedi, BigDecimal totalPedido_pedi, PedidoStatusEnum statusPedido_pedi) {
 		
@@ -46,17 +57,6 @@ public class Pedido implements Serializable{
 		this.status_pedi = statusPedido_pedi;
 	}
 	
-	public Pedido(Long numero_pedi, Long cliente_id, String dataEmissao_pedi, String dataEntrega_pedi,
-			BigDecimal totalPedido_pedi, PedidoStatusEnum statusPedido_pedi) {
-		this.numero_pedi = numero_pedi;
-		this.cliente_id = cliente_id;
-		this.dataEmissao_pedi = dataEmissao_pedi;
-		this.dataEntrega_pedi = dataEntrega_pedi;
-		this.totalPedido_pedi = totalPedido_pedi;
-		this.status_pedi = statusPedido_pedi;
-	}
-	
-
 	public Pedido(Long numero_pedi, Long cliente_id, String dataEmissao_pedi, String dataEntrega_pedi,
 			BigDecimal totalPedido_pedi, PedidoStatusEnum status_pedi, List<ItensPedido> pedidoItens_pedi) {
 		this.numero_pedi = numero_pedi;

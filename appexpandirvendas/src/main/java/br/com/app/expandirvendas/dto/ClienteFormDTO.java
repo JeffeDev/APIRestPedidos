@@ -4,7 +4,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import br.com.app.expandirvendas.dao.repository.ClienteRepository;
 import br.com.app.expandirvendas.model.Cliente;

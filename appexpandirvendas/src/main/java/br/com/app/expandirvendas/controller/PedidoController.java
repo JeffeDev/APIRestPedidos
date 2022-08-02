@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.app.expandirvendas.dao.repository.ItensPedidoRepository;
 import br.com.app.expandirvendas.dao.repository.PedidoRepository;
 import br.com.app.expandirvendas.dto.PedidoDTO;
 import br.com.app.expandirvendas.dto.PedidoFormDTO;
 import br.com.app.expandirvendas.dto.ProdutoDTO;
+import br.com.app.expandirvendas.model.ItensPedido;
 import br.com.app.expandirvendas.model.Pedido;
 
 
@@ -32,6 +34,9 @@ public class PedidoController implements Serializable{
 	
 	@Autowired
 	private PedidoRepository pedidoRepository;
+
+	@Autowired
+	private ItensPedidoRepository itensPedidoRepository;
 	
 	@GetMapping
 	public List<PedidoDTO> lista(){
@@ -61,7 +66,14 @@ public class PedidoController implements Serializable{
 	
 	@DeleteMapping("/del/{id}")
 	public ResponseEntity<ProdutoDTO> remover(@PathVariable Long id) {
+		Optional<ItensPedido> itens = itensPedidoRepository.findById(id);
+		
+		if(!itens.isEmpty()) {
+			itensPedidoRepository.deleteAllByIdPedido_id(id);
+		}
+		
 		pedidoRepository.deleteById(id);
-			return ResponseEntity.ok().build();
-	}
+		return ResponseEntity.ok().build();
+
+	} 
 }
