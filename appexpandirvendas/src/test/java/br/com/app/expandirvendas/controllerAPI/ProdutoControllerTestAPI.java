@@ -117,6 +117,7 @@ class ProdutoControllerTestAPI {
 			System.out.println("Excessão: " + e.getMessage());
 		}
 	}
+	
 	@Test
 	void deveriaDeletarOProduto() {
 		try {

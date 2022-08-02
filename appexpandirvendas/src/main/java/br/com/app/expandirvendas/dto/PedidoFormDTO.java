@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -17,21 +18,24 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class PedidoFormDTO {
-
+	
+	@NotEmpty(message = "Numero do Pedido Inválido")
 	private Long numero_pedi;
+	
+	@NotEmpty(message = "Id Cliente Inválido")
 	private Long cliente_id;
 	
-	@NotNull(message = "deve ser uma data no formato dd/MM/yyyy")
-	@Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "deve ser uma data no formato dd/MM/yyyy")
+	@NotEmpty(message = "deve ser uma data no formato dd/MM/yyyy")
+	@Pattern(regexp = "^\\d{2}/\\d{2}/\\\\d{4}$", message = "deve ser uma data no formato dd/MM/yyyy")
 	private String dataEmissao_pedi;
 	
-	@NotNull(message = "deve ser uma data no formato dd/MM/yyyy")
-	@Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "deve ser uma data no formato dd/MM/yyyy")
+	@NotEmpty(message = "deve ser uma data no formato dd/MM/yyyy")
+	@Pattern(regexp = "^\\d{2}/\\d{2}/\\\\d{4}$", message = "deve ser uma data no formato dd/MM/yyyy")
 	private String dataEntrega_pedi;
 	
 	private BigDecimal totalPedido_pedi;
 
-	@NotNull(message = "Status deve ser ABERTO ou FECHADO")
+	@NotEmpty(message = "Status deve ser ABERTO ou FECHADO")
 	private PedidoStatusEnum statusPedido_pedi = PedidoStatusEnum.ABERTO;
 	
 	private List<ItensPedido> pedidoItens_pedi = new ArrayList<>();

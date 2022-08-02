@@ -237,6 +237,105 @@ https://localhost:8080/produto/1
 
 ````
 
+#### GET consultar pedido
+````
+https://localhost:8080/pedido
+
+
+    {
+        "id": 1,
+        "numero_pedi": 1,
+        "cliente_id": 1,
+        "dataEmissao_pedi": "31/07/2022",
+        "dataEntrega_pedi": "31/07/2022",
+        "totalPedido_pedi": 101.97,
+        "status_pedi": "ABERTO",
+        "itens_pedi": [
+            {
+                "id": 1,
+                "produto_id": 1,
+                "pedido_id": 1,
+                "sequencia_item": 1,
+                "quantidade_item": 1.00,
+                "precoUnitario_item": 33.99,
+                "desconto_item": 0.00,
+                "totalItem_item": 33.99
+            },
+            {
+                "id": 2,
+                "produto_id": 2,
+                "pedido_id": 1,
+                "sequencia_item": 2,
+                "quantidade_item": 1.00,
+                "precoUnitario_item": 33.99,
+                "desconto_item": 0.00,
+                "totalItem_item": 33.99
+            },
+            {
+                "id": 3,
+                "produto_id": 3,
+                "pedido_id": 1,
+                "sequencia_item": 3,
+                "quantidade_item": 1.00,
+                "precoUnitario_item": 33.99,
+                "desconto_item": 0.00,
+                "totalItem_item": 33.99
+            }
+        ]
+    }
+
+````
+
+#### GET consultar pedido por id
+````
+https://localhost:8080/pedido/1
+
+
+    {
+        "id": 1,
+        "numero_pedi": 1,
+        "cliente_id": 1,
+        "dataEmissao_pedi": "31/07/2022",
+        "dataEntrega_pedi": "31/07/2022",
+        "totalPedido_pedi": 101.97,
+        "status_pedi": "ABERTO",
+        "itens_pedi": [
+            {
+                "id": 1,
+                "produto_id": 1,
+                "pedido_id": 1,
+                "sequencia_item": 1,
+                "quantidade_item": 1.00,
+                "precoUnitario_item": 33.99,
+                "desconto_item": 0.00,
+                "totalItem_item": 33.99
+            },
+            {
+                "id": 2,
+                "produto_id": 2,
+                "pedido_id": 1,
+                "sequencia_item": 2,
+                "quantidade_item": 1.00,
+                "precoUnitario_item": 33.99,
+                "desconto_item": 0.00,
+                "totalItem_item": 33.99
+            },
+            {
+                "id": 3,
+                "produto_id": 3,
+                "pedido_id": 1,
+                "sequencia_item": 3,
+                "quantidade_item": 1.00,
+                "precoUnitario_item": 33.99,
+                "desconto_item": 0.00,
+                "totalItem_item": 33.99
+            }
+        ]
+    }
+
+````
+
+
 
 
 ## 📒 Conteúdos  

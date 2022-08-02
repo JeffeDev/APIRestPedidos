@@ -31,15 +31,13 @@ public class PedidoItensDTO {
 	
 	public PedidoItensDTO(Pedido pedidoVenda) {
 		
-		this.id = pedidoVenda.getId_pedi();
 		this.numero_pedi = pedidoVenda.getNumeroPedido_pedi();
 		this.cliente_id = pedidoVenda.getCliente_id();
 		this.dataEmissao_pedi = pedidoVenda.getDataEmissao_pedi();
 		this.dataEntrega_pedi = pedidoVenda.getDataEntrega_pedi();
 		this.totalPedido_pedi = pedidoVenda.getTotalPedido_pedi();
 		this.status_pedi = pedidoVenda.getStatusPedido_pedi();
-		
-		this.itens_pedi = itensRepository.findByPedido(pedidoVenda.getId_pedi());
+		this.itens_pedi = pedidoVenda.getItens_pedi();
 	}
 
 	public static List<PedidoItensDTO> converter(List<Pedido> pedido) {

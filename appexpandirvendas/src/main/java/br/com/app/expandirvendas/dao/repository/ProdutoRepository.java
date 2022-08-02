@@ -6,5 +6,4 @@ import br.com.app.expandirvendas.model.Produto;
 
 public interface ProdutoRepository  extends JpaRepository<Produto, Long> {
 
-		
 }

@@ -45,7 +45,7 @@ public class PedidoController implements Serializable{
 		System.out.println("Salvando pedido "+ pedido);
 		pedidoRepository.save(pedido);
 		
-		URI uri = uriBuilder.path("/pedido/{id}").buildAndExpand(pedido.getId_pedi()).toUri();
+		URI uri = uriBuilder.path("/pedido/{id}").buildAndExpand(pedido.getNumeroPedido_pedi()).toUri();
 		
 		return ResponseEntity.created(uri).body(new PedidoDTO(pedido));
 	}

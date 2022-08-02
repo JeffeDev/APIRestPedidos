@@ -26,13 +26,13 @@ public class PedidoDTO {
     private List<ItensPedido> pedidoItens_pedi = new ArrayList<>();
 	
 	public PedidoDTO(Pedido pedidoVenda) {
-		this.id = pedidoVenda.getId_pedi();
 		this.numero_pedi = pedidoVenda.getNumeroPedido_pedi();
 		this.cliente_id = pedidoVenda.getCliente_id();
 		this.dataEmissao_pedi = pedidoVenda.getDataEmissao_pedi();
 		this.dataEntrega_pedi = pedidoVenda.getDataEntrega_pedi();
 		this.totalPedido_pedi = pedidoVenda.getTotalPedido_pedi();
 		this.status_pedi = pedidoVenda.getStatusPedido_pedi();
+		this.pedidoItens_pedi = pedidoVenda.getItens_pedi();
 	}
 
 	public static List<PedidoDTO> converter(List<Pedido> pedido) {

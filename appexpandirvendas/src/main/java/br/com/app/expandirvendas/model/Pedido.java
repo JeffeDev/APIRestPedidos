@@ -9,6 +9,7 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,8 +20,6 @@ public class Pedido implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
 	private Long numero_pedi;
 	private Long cliente_id;
 	
@@ -31,17 +30,15 @@ public class Pedido implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private PedidoStatusEnum status_pedi = PedidoStatusEnum.ABERTO;
 	
-	@OneToMany(mappedBy = "pedido_id")
+	@OneToMany(mappedBy = "pedido_id", fetch = FetchType.EAGER)
 	private List<ItensPedido> itens_pedi = new ArrayList<>();
 	
 	public Pedido() {
 	}
 
-	public Pedido(Long id_pedi, Long numeroPedido_pedi, Long cliente_id, String dataEmissao_pedi,
+	public Pedido(Long cliente_id, String dataEmissao_pedi,
 			String dataEntrega_pedi, BigDecimal totalPedido_pedi, PedidoStatusEnum statusPedido_pedi) {
 		
-		this.id = id_pedi;
-		this.numero_pedi = numeroPedido_pedi;
 		this.cliente_id = cliente_id;
 		this.dataEmissao_pedi = dataEmissao_pedi;
 		this.dataEntrega_pedi = dataEntrega_pedi;
@@ -51,7 +48,6 @@ public class Pedido implements Serializable{
 	
 	public Pedido(Long numero_pedi, Long cliente_id, String dataEmissao_pedi, String dataEntrega_pedi,
 			BigDecimal totalPedido_pedi, PedidoStatusEnum statusPedido_pedi) {
-		super();
 		this.numero_pedi = numero_pedi;
 		this.cliente_id = cliente_id;
 		this.dataEmissao_pedi = dataEmissao_pedi;
@@ -61,10 +57,8 @@ public class Pedido implements Serializable{
 	}
 	
 
-	public Pedido(Long id_pedi, Long numero_pedi, Long cliente_id, String dataEmissao_pedi, String dataEntrega_pedi,
+	public Pedido(Long numero_pedi, Long cliente_id, String dataEmissao_pedi, String dataEntrega_pedi,
 			BigDecimal totalPedido_pedi, PedidoStatusEnum status_pedi, List<ItensPedido> pedidoItens_pedi) {
-		super();
-		this.id = id_pedi;
 		this.numero_pedi = numero_pedi;
 		this.cliente_id = cliente_id;
 		this.dataEmissao_pedi = dataEmissao_pedi;
@@ -76,14 +70,10 @@ public class Pedido implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Pedido [id_pedi=" + id + ", numeroPedido_pedi=" + numero_pedi + ", cliente_id=" + cliente_id
+		return "Pedido [ numeroPedido_pedi=" + numero_pedi + ", cliente_id=" + cliente_id
 				+ ", dataEmissao_pedi=" + dataEmissao_pedi + ", dataEntrega_pedi=" + dataEntrega_pedi
 				+ ", totalPedido_pedi=" + totalPedido_pedi + ", statusPedido_pedi=" + status_pedi
 				+ "]";
-	}
-
-	public Long getId_pedi() {
-		return id;
 	}
 
 	public Long getNumeroPedido_pedi() {
@@ -115,7 +105,7 @@ public class Pedido implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(numero_pedi);
 	}
 
 	@Override
@@ -127,7 +117,7 @@ public class Pedido implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Pedido other = (Pedido) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(numero_pedi, other.numero_pedi);
 	}
 	
 
