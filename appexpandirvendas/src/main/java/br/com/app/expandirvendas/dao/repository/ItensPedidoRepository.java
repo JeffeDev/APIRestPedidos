@@ -13,7 +13,7 @@ public interface ItensPedidoRepository  extends JpaRepository<ItensPedido, Long>
 	@Query("SELECT item FROM TBL_ITENS_PEDIDO item WHERE item.pedido_id = :pedido_id")
 	List<ItensPedido> findByPedido(@Param("pedido_id") Long pedido_id);
 
-	@Query("delete from TBL_ITENS_PEDIDO itens where itens.pedido_id=:id")
-	void deleteAllByIdPedido_id(@Param("id") Long id);
+	@Query("delete from TBL_ITENS_PEDIDO itens where itens.pedido_id=:numero")
+	void deleteAllByIdPedido_id(@Param("numero") Long numero);
 
 }

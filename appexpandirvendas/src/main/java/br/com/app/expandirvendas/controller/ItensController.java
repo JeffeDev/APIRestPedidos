@@ -37,6 +37,17 @@ public class ItensController implements Serializable{
 		return ItensPedidoDTO.converter(itens);
 	}
 	
+	@GetMapping("/num-pedido/{numero}")
+	public List<ItensPedidoDTO>  detalharItensPorPedido(@PathVariable Long numero) {
+		List<ItensPedido>  itens = itensPedidoRepository.findByPedido(numero);
+		
+		if (itens.isEmpty()) {
+			return (List<ItensPedidoDTO>) ResponseEntity.notFound().build();
+		}else {	
+			return ItensPedidoDTO.converter(itens);
+		}
+		
+	}	
 	@PostMapping
 	public ResponseEntity<ItensPedidoDTO> cadastrar(@RequestBody @Valid ItensPedidoFormDTO formApi,
 			UriComponentsBuilder uriBuilder) {
