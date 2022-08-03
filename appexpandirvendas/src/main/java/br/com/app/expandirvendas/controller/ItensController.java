@@ -38,13 +38,13 @@ public class ItensController implements Serializable{
 	}
 	
 	@GetMapping("/num-pedido/{numero}")
-	public List<ItensPedidoDTO>  detalharItensPorPedido(@PathVariable Long numero) {
-		List<ItensPedido>  itens = itensPedidoRepository.findByPedido(numero);
+	public ResponseEntity<ItensPedidoDTO> detalharItensPorPedido(@PathVariable Long numero) {
+		Optional<ItensPedido>  itens = itensPedidoRepository.findByPedido(numero);
 		
 		if (itens.isEmpty()) {
-			return (List<ItensPedidoDTO>) ResponseEntity.notFound().build();
+			return ResponseEntity.notFound().build();
 		}else {	
-			return ItensPedidoDTO.converter(itens);
+			return ResponseEntity.ok(new ItensPedidoDTO(itens.get()));
 		}
 		
 	}	

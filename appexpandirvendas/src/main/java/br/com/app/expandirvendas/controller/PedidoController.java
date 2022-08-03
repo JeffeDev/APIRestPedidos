@@ -68,14 +68,7 @@ public class PedidoController implements Serializable{
 	@Transactional
 	@DeleteMapping("/del/{id}")
 	public ResponseEntity<ProdutoDTO> remover(@PathVariable Long id) {
-		Optional<ItensPedido> itens = itensPedidoRepository.findById(id);
-		
-		if(!itens.isEmpty()) {
-			itensPedidoRepository.deleteAllByIdPedido_id(id);
-		}
-		
 		pedidoRepository.deleteById(id);
 		return ResponseEntity.ok().build();
-
-	} 
+	}
 }
