@@ -143,10 +143,11 @@ class PedidoControllerTestAPI {
 			System.out.println("Excessão: " + e.getMessage());
 		}
 	}
+	
 	@Test
 	void deveriaListarPedidoPeloIDPedido() {
 		try {
-			URI uri = new URI("/pedido/1");
+			URI uri = new URI("/pedido/2");
 
 			mockMvc.perform(MockMvcRequestBuilders
 				.get(uri)
@@ -159,20 +160,33 @@ class PedidoControllerTestAPI {
 	}
 	
 	@Test
-	void naoDeveriaPermitirExclusaodePedidosQueTemItensCadastrados() {
+	void deveriaExcluirPedidosEItensCadastrados() {
 		try {
 			URI uri = new URI("/pedido/del/1");
 
 			mockMvc.perform(MockMvcRequestBuilders
 				.delete(uri)
 				.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(MockMvcResultMatchers.status().is(400));
+			.andExpect(MockMvcResultMatchers.status().is(200));
 			
 		}catch (Exception e) {
 			System.out.println("Excessão: " + e.getMessage());
 		}
 	}
 	
-	
+	@Test
+	void naoDeveriaExistirItensAposOPedidoTerSidoExcluido() {
+		try {
+			URI uri = new URI("/itens/num-pedido/1");
+
+			mockMvc.perform(MockMvcRequestBuilders
+				.get(uri)
+				.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(MockMvcResultMatchers.status().is(404));
+			
+		}catch (Exception e) {
+			System.out.println("Excessão: " + e.getMessage());
+		}
+	}
 
 }

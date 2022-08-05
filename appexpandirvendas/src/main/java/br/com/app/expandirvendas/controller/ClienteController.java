@@ -54,6 +54,20 @@ public class ClienteController implements Serializable{
 		return ResponseEntity.created(uri).body(new ClienteDTO(cliente));
 	}
 
+	@PostMapping("/alt/{id}")
+	public ResponseEntity<ClienteDTO> alterar(@RequestBody @Valid ClienteFormDTO formApi,
+			UriComponentsBuilder uriBuilder) {
+		Cliente cliente = formApi.converter(clienteRepository);
+		
+		
+		System.out.println("Alteranco cliente " + cliente);
+		clienteRepository.save(cliente);
+
+		URI uri = uriBuilder.path("/cliente/{id}").buildAndExpand(cliente.getId_cli()).toUri();
+
+		return ResponseEntity.ok(uri).ok(new ClienteDTO(cliente));
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<ClienteDTO> detalhar(@PathVariable Long id) {
 		Optional<Cliente> cliente = clienteRepository.findById(id);
